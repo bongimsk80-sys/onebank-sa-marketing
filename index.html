@@ -1,0 +1,2682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OneBank SA — South Africa's B2B Treasury Management Platform</title>
+  <meta name="description" content="OneBank SA aggregates your FNB, Standard Bank, Absa, Nedbank, and Capitec accounts into one secure treasury console. Manage payments, approvals, and analytics from a single dashboard." />
+  <meta property="og:title" content="OneBank SA — South Africa's Treasury Management Platform" />
+  <meta property="og:description" content="OneBank SA is a secure, cloud-native treasury management platform for South African businesses. Aggregate FNB, Standard Bank, Absa, Nedbank and Capitec into one console." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://onebank-sa.netlify.app" />
+  <meta property="og:image" content="https://onebank-sa.netlify.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="OneBank SA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OneBank SA — South Africa's Treasury Management Platform" />
+  <meta name="twitter:description" content="Aggregate all your SA bank accounts into one secure treasury console. Multi-step approvals, analytics, ERP integrations, POPIA compliant." />
+  <meta name="twitter:image" content="https://onebank-sa.netlify.app/og-image.png" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "OneBank SA",
+    "url": "https://onebank-sa.netlify.app",
+    "description": "OneBank SA is a B2B treasury management platform that aggregates South African bank accounts (FNB, Standard Bank, Absa, Nedbank, Capitec) into a single secure console for corporate treasury teams.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Beta",
+        "price": "0",
+        "priceCurrency": "ZAR",
+        "description": "Free beta access — full platform features included"
+      },
+      {
+        "@type": "Offer",
+        "name": "Growth",
+        "price": "2499",
+        "priceCurrency": "ZAR",
+        "description": "Per organisation per month"
+      }
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Bonginkosi Gerald Masuku",
+      "jobTitle": "Founder & CEO",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Gordon Institute of Business Science, University of Pretoria"
+      },
+      "url": "https://www.linkedin.com/in/bonginkosi-masuku-mba-6802315a"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "OneBank SA",
+      "url": "https://onebank-sa.netlify.app",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "bongimsk80@gmail.com",
+        "contactType": "Customer Support"
+      },
+      "areaServed": "ZA",
+      "foundingDate": "2026"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* =====================
+       DESIGN SYSTEM — OneBank SA Brand Palette
+       ===================== */
+    :root {
+      /* Primary — Forest Green */
+      --primary:        #1B4332;
+      --primary-dark:   #2D6A4F;
+      --primary-deep:   #0A1F14;
+      --primary-light:  #F0FDF4;
+
+      /* Accent — Gold */
+      --orange:         #D4A017;
+      --accent:         #D4A017;
+      --accent-hover:   #A07810;
+      --yellow:         #D4A017;
+
+      /* Neutral */
+      --navy:           #1A202C;
+      --dark:           #1A202C;
+      --medium:         #718096;
+      --muted:          #A0AEC0;
+      --light-bg:       #F4F6F8;
+      --border:         #E2E8F0;
+      --white:          #FFFFFF;
+      --surface:        #FFFFFF;
+
+      /* Semantic */
+      --success:        #27AE60;
+      --success-light:  #F0FDF4;
+      --warning:        #E67E22;
+      --warning-light:  #FFF7ED;
+      --error:          #C0392B;
+      --error-light:    #FFF1F2;
+      --info:           #2980B9;
+      --info-light:     #EFF6FF;
+
+      /* SA Bank Brand Colours */
+      --bank-fnb:       #006B3C;
+      --bank-std:       #0033A0;
+      --bank-absa:      #DC0032;
+      --bank-ned:       #007B40;
+      --bank-cap:       #007DC5;
+
+      /* Utility */
+      --shadow:         0 4px 24px rgba(26,32,44,0.10);
+      --radius:         12px;
+      --radius-sm:      8px;
+      --transition:     0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: 100%;
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* =====================  PAGES  ===================== */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* =====================  HEADER / NAV  ===================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(26,32,44,0.06);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .logo-mark {
+      width: 40px; height: 40px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-weight: 800; font-size: 14px;
+    }
+    .logo-text { font-size: 20px; font-weight: 700; color: var(--primary); }
+    .logo-text span { color: var(--accent); }
+
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--dark);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+    nav a:hover, nav a.active {
+      background: rgba(27,67,50,0.08);
+      color: var(--primary);
+    }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px; font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none; outline: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,67,50,0.35); }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+    .btn-outline:hover { background: var(--primary); color: white; }
+    .btn-lg { padding: 14px 32px; font-size: 16px; border-radius: var(--radius); }
+
+    /* Hero dark-background button overrides */
+    .hero-actions .btn-primary { background: var(--accent); color: white; }
+    .hero-actions .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,160,23,0.4); }
+    .hero-actions .btn-outline { background: transparent; color: white; border-color: rgba(255,255,255,0.55); }
+    .hero-actions .btn-outline:hover { background: rgba(255,255,255,0.12); color: white; border-color: white; transform: translateY(-1px); }
+    .btn-orange { background: var(--orange); color: white; }
+    .btn-orange:hover { background: #A07810; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,160,23,0.35); }
+
+    /* =====================  HERO  ===================== */
+    .hero {
+      background: linear-gradient(160deg, #0A1F14 0%, #1B4332 55%, #245C40 100%);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231B4332' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(27,67,50,0.15);
+      border: 1px solid rgba(27,67,50,0.3);
+      color: #6EE7B7;
+      font-size: 13px; font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #6EE7B7;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(110,231,183,0.7); }
+      50% { transform: scale(1.25); box-shadow: 0 0 0 8px rgba(110,231,183,0); }
+    }
+    .hero h1 {
+      font-size: 48px; font-weight: 800; line-height: 1.15;
+      color: white;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 18px; color: rgba(255,255,255,0.75);
+      margin-bottom: 36px; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-dashboard {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+    .dash-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 18px;
+    }
+    .dash-title { color: rgba(255,255,255,0.9); font-weight: 600; font-size: 14px; }
+    .dash-badge { background: rgba(39,174,96,0.2); color: #27AE60; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+    .dash-banks {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+      margin-bottom: 16px;
+    }
+    .dash-bank {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 12px;
+    }
+    .dash-bank-name { color: rgba(255,255,255,0.6); font-size: 11px; margin-bottom: 4px; }
+    .dash-bank-amt { color: white; font-weight: 700; font-size: 15px; }
+    .dash-bank-chg { font-size: 10px; }
+    .dash-bank-chg.pos { color: #27AE60; }
+    .dash-bank-chg.neg { color: #C0392B; }
+    .dash-total {
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 10px; padding: 14px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .dash-total-label { color: rgba(255,255,255,0.8); font-size: 12px; }
+    .dash-total-amt { color: white; font-size: 20px; font-weight: 800; }
+    .pending-row {
+      margin-top: 10px;
+      display: flex; gap: 8px;
+    }
+    .pending-chip {
+      background: rgba(212,160,23,0.15);
+      border: 1px solid rgba(212,160,23,0.3);
+      color: var(--orange);
+      font-size: 11px; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .approved-chip {
+      background: rgba(39,174,96,0.15);
+      border: 1px solid rgba(39,174,96,0.3);
+      color: #27AE60;
+      font-size: 11px; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px;
+    }
+
+    /* =====================  STATS BAR  ===================== */
+    .stats-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 0 20px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 36px; font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-num span { color: var(--orange); }
+    .stat-label { font-size: 13px; color: var(--medium); font-weight: 500; }
+
+    /* =====================  SECTION BASE  ===================== */
+    section { padding: 90px 0; }
+    .section-tag {
+      display: inline-block;
+      background: rgba(212,160,23,0.12);
+      color: var(--accent);
+      font-size: 12px; font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-heading {
+      font-size: 36px; font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .section-heading span { color: var(--accent); }
+    .section-sub {
+      font-size: 17px; color: var(--medium);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+    .section-header { margin-bottom: 56px; }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* =====================  PROBLEM / SOLUTION  ===================== */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .problem-card {
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+    .problem-card h4 {
+      font-size: 15px; font-weight: 700;
+      color: var(--navy); margin-bottom: 8px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .problem-icon {
+      width: 32px; height: 32px;
+      background: rgba(192,57,43,0.12);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .solution-icon {
+      width: 32px; height: 32px;
+      background: rgba(27,67,50,0.12);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .problem-card p { font-size: 14px; color: var(--medium); }
+    .solution-visual {
+      background: linear-gradient(160deg, #0A1F14, #1B4332);
+      border-radius: 20px;
+      padding: 40px;
+      color: white;
+    }
+    .sv-title { font-size: 20px; font-weight: 700; margin-bottom: 24px; }
+    .sv-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 20px;
+    }
+    .sv-check {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(27,67,50,0.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 14px; margin-top: 2px;
+    }
+    .sv-text { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+
+    /* =====================  FEATURES GRID  ===================== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .feature-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); border-color: transparent; }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .feature-card p { font-size: 14px; color: var(--medium); line-height: 1.6; }
+    .feature-status {
+      display: inline-block;
+      background: rgba(39,174,96,0.12);
+      color: #27AE60;
+      font-size: 11px; font-weight: 700;
+      padding: 2px 8px; border-radius: 10px;
+      margin-top: 12px;
+    }
+
+    /* icon bg colors */
+    .icon-blue   { background: rgba(27,67,50,0.12); }
+    .icon-orange { background: rgba(212,160,23,0.12); }
+    .icon-green  { background: rgba(39,174,96,0.12); }
+    .icon-purple { background: rgba(41,128,185,0.12); }
+    .icon-navy   { background: rgba(26,32,44,0.10); }
+    .icon-yellow { background: rgba(212,160,23,0.15); }
+
+    /* 4-col grid — collapses responsively */
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 960px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .grid-4 { grid-template-columns: 1fr; } }
+
+    /* =====================  BANKS / INTEGRATIONS  ===================== */
+    .banks-section { background: var(--light-bg); }
+    .banks-row {
+      display: flex; justify-content: center; align-items: center;
+      gap: 20px; flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .bank-chip {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 12px 24px;
+      font-weight: 700; font-size: 15px;
+      color: var(--navy);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: all var(--transition);
+    }
+    .bank-chip:hover { box-shadow: var(--shadow); transform: translateY(-2px); border-color: var(--primary); color: var(--primary); }
+    .bank-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    /* =====================  HOW IT WORKS  ===================== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 32px; left: 80px; right: 80px;
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+    .step {
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+    .step-num {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 22px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 20px rgba(27,67,50,0.3);
+    }
+    .step h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--medium); }
+
+    /* =====================  SECURITY  ===================== */
+    .security-section { background: linear-gradient(160deg, #0A1F14, #1B4332); }
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .security-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .security-card h4 {
+      font-size: 15px; font-weight: 700;
+      color: white; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .security-card p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .sec-icon {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: rgba(27,67,50,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .sec-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600;
+      color: #27AE60; margin-top: 10px;
+    }
+    .sec-badge::before { content: '✓'; }
+
+    /* =====================  ROLES TABLE  ===================== */
+    .roles-section { background: var(--light-bg); }
+    .roles-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      /* Scroll-shadow trick: fades appear when content is out-of-view */
+      background:
+        linear-gradient(to right, #ffffff 30%, rgba(255,255,255,0)),
+        linear-gradient(to right, rgba(255,255,255,0), #ffffff 70%) 100% 0,
+        radial-gradient(farthest-side at 0% 50%, rgba(0,0,0,.12), transparent),
+        radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.12), transparent) 100% 0;
+      background-repeat: no-repeat;
+      background-color: #ffffff;
+      background-size: 40px 100%, 40px 100%, 12px 100%, 12px 100%;
+      background-attachment: local, local, scroll, scroll;
+    }
+    .roles-table th:first-child,
+    .roles-table td:first-child {
+      white-space: nowrap; min-width: 160px;
+      position: sticky; left: 0; z-index: 2;
+      box-shadow: 2px 0 6px rgba(0,0,0,0.10);
+    }
+    .roles-table th:first-child { background: var(--primary); }
+    .roles-table td:first-child { background: #ffffff; }
+    .roles-table tr:hover td:first-child { background: var(--light-bg); }
+    .roles-table .onebank-row td { background: rgba(27,67,50,0.05); }
+    .roles-table .onebank-row td:first-child { background: rgba(240,253,244,0.95); }
+    .table-scroll-hint { display: none; }
+    .roles-table {
+      width: 100%; border-collapse: collapse;
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .roles-table th {
+      background: var(--primary);
+      color: white;
+      padding: 14px 20px;
+      font-size: 13px; font-weight: 600;
+      text-align: left;
+    }
+    .roles-table td {
+      padding: 12px 20px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    .roles-table tr:last-child td { border-bottom: none; }
+    .roles-table tr:hover td { background: var(--light-bg); }
+    .yes-cell { color: #27AE60; font-weight: 700; }
+    .no-cell { color: var(--border); }
+
+    /* =====================  PRICING  ===================== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .price-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      position: relative;
+    }
+    .price-card.featured {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-color: transparent;
+      transform: scale(1.04);
+      box-shadow: 0 12px 40px rgba(27,67,50,0.35);
+    }
+    .price-badge {
+      position: absolute; top: -14px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--orange);
+      color: white; font-size: 11px; font-weight: 700;
+      padding: 4px 16px; border-radius: 20px;
+      white-space: nowrap;
+    }
+    .price-tier { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--medium); margin-bottom: 12px; }
+    .price-card.featured .price-tier { color: rgba(255,255,255,0.7); }
+    .price-amount {
+      font-size: 42px; font-weight: 800; color: var(--navy);
+      line-height: 1; margin-bottom: 6px;
+    }
+    .price-card.featured .price-amount { color: white; }
+    .price-period { font-size: 13px; color: var(--medium); margin-bottom: 24px; }
+    .price-card.featured .price-period { color: rgba(255,255,255,0.7); }
+    .price-features { margin-bottom: 28px; }
+    .price-feat {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .price-card.featured .price-feat { color: rgba(255,255,255,0.9); }
+    .price-check { color: var(--primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .price-card.featured .price-check { color: var(--yellow); }
+    .btn-white { background: white; color: var(--primary); font-weight: 700; }
+    .btn-white:hover { background: var(--light-bg); }
+
+    /* =====================  ROADMAP  ===================== */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .roadmap-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .roadmap-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .roadmap-card.v1::after { background: var(--primary); }
+    .roadmap-card.v2::after { background: var(--orange); }
+    .roadmap-card.v3::after { background: var(--navy); }
+    .roadmap-version {
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .roadmap-card.v1 .roadmap-version { color: var(--primary); }
+    .roadmap-card.v2 .roadmap-version { color: var(--orange); }
+    .roadmap-card.v3 .roadmap-version { color: var(--navy); }
+    .roadmap-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .roadmap-card .quarter { font-size: 13px; color: var(--medium); margin-bottom: 18px; }
+    .roadmap-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: var(--dark);
+      margin-bottom: 8px; line-height: 1.45;
+    }
+    .roadmap-item::before { content: '→'; color: var(--medium); flex-shrink: 0; }
+
+    /* =====================  COMPETITOR TABLE  ===================== */
+    .competitor-section { background: var(--light-bg); }
+
+    /* =====================  TECH STACK  ===================== */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .tech-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      text-align: center;
+    }
+    .tech-card .tech-icon { font-size: 28px; margin-bottom: 10px; }
+    .tech-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .tech-card p { font-size: 12px; color: var(--medium); }
+
+    /* =====================  FOUNDER SECTION  ===================== */
+    .founder-section { background: var(--light-bg); }
+    .founder-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px;
+      align-items: start;
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    .founder-avatar {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 4px solid var(--primary);
+      box-shadow: 0 6px 28px rgba(27,67,50,0.28);
+      margin: 0 auto;
+      flex-shrink: 0;
+      display: block;
+    }
+    .founder-meta { display: flex; flex-direction: column; justify-content: center; }
+    .founder-name { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+    .founder-title { font-size: 15px; font-weight: 600; color: var(--primary); margin-bottom: 18px; }
+    .founder-bio { font-size: 15px; color: var(--medium); line-height: 1.75; margin-bottom: 20px; }
+    .founder-creds {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 20px;
+    }
+    .founder-cred {
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      color: var(--navy);
+      font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .founder-linkedin {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #0A66C2; color: white;
+      padding: 10px 20px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .founder-linkedin:hover { background: #084fa0; transform: translateY(-1px); }
+    @media (max-width: 640px) {
+      .founder-card { grid-template-columns: 1fr; text-align: center; padding: 28px 20px; }
+      .founder-creds { justify-content: center; }
+      .founder-linkedin { margin: 0 auto; }
+    }
+
+    /* =====================  BOOK DEMO / CTA  ===================== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 90px 0;
+    }
+    .cta-inner { text-align: center; }
+    .cta-inner h2 { font-size: 40px; font-weight: 800; color: white; margin-bottom: 16px; }
+    .cta-inner p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* =====================  CONTACT FORM  ===================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info h3 { font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .contact-info p { font-size: 15px; color: var(--medium); margin-bottom: 32px; line-height: 1.7; }
+    .contact-item {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 18px;
+    }
+    .c-icon {
+      width: 42px; height: 42px;
+      background: rgba(27,67,50,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .c-label { font-size: 12px; color: var(--medium); }
+    .c-value { font-size: 14px; font-weight: 600; color: var(--navy); }
+    form { background: var(--light-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: inherit; font-size: 14px;
+      color: var(--dark); background: white;
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--primary); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    /* =====================  FOOTER  ===================== */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      padding: 72px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+    .footer-brand .logo-mark {
+      background: var(--accent);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      color: var(--primary);
+      font-size: 14px;
+    }
+    .footer-brand .logo-text { color: white; font-size: 18px; }
+    .footer-desc { font-size: 14px; margin: 16px 0 24px; line-height: 1.7; }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-btn {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; cursor: pointer;
+      transition: background var(--transition);
+    }
+    .social-btn:hover { background: rgba(27,67,50,0.3); }
+    .footer-col h5 { font-size: 13px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 18px; }
+    .footer-link {
+      display: block; font-size: 14px; color: rgba(255,255,255,0.65);
+      margin-bottom: 10px; cursor: pointer;
+      transition: color var(--transition);
+    }
+    .footer-link:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 13px; }
+    .footer-legal { display: flex; gap: 24px; font-size: 13px; }
+    .footer-legal a:hover { color: white; }
+
+    /* =====================  ABOUT PAGE  ===================== */
+    .about-hero {
+      background: linear-gradient(160deg, #0A1F14, #1B4332);
+      padding: 80px 0;
+    }
+    .about-hero h1 { font-size: 44px; font-weight: 800; color: white; margin-bottom: 16px; }
+    .about-hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 600px; line-height: 1.7; }
+
+    .phases-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    }
+    .phase-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 18px;
+    }
+    .phase-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--accent);
+      color: white; font-weight: 800; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .phase-text h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .phase-text p { font-size: 12px; color: var(--medium); }
+    .phase-done { color: #27AE60; font-size: 11px; font-weight: 700; }
+
+    /* =====================  RESPONSIVE  ===================== */
+
+    /* Prevent any horizontal overflow globally */
+    html, body { overflow-x: hidden; }
+    * { min-width: 0; }
+
+    /* ---- Tablet (≤960px) ---- */
+    @media (max-width: 960px) {
+      .container { padding: 0 20px; }
+      section { padding: 64px 0; }
+
+      /* Hero */
+      .hero { padding: 64px 0 48px; }
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 16px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-dashboard { display: none; }
+      .hero-actions { flex-direction: column; gap: 10px; }
+      .hero-actions .btn { width: 100%; text-align: center; }
+
+      /* Stats */
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
+      .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+      .stat-num { font-size: 28px; }
+
+      /* Grids */
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .security-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .price-card.featured { transform: none; }
+      .roadmap-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .problem-grid { grid-template-columns: 1fr; gap: 32px; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .steps-grid::before { display: none; }
+      .phases-grid { grid-template-columns: 1fr; }
+
+      /* Page heroes */
+      .page-hero { padding: 56px 0; }
+      .page-hero h1 { font-size: 32px; }
+      .page-hero p { font-size: 16px; }
+
+      /* CTA */
+      .cta-inner h2 { font-size: 30px; }
+      .cta-actions { flex-direction: column; align-items: center; gap: 10px; }
+      .cta-actions .btn { width: 100%; max-width: 340px; text-align: center; }
+
+    }
+
+    /* ---- Mobile (≤640px) ---- */
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      section { padding: 48px 0; }
+
+      /* Header */
+      .header-inner nav { display: none; }
+      .header-inner { height: 60px; }
+      .header-actions .btn-outline { display: none; }
+      .logo-text { font-size: 17px; }
+      .logo-mark { width: 34px; height: 34px; font-size: 15px; }
+
+      /* Notification bar */
+      .notif-bar { font-size: 12px; padding: 8px 16px; }
+
+      /* Hero */
+      .hero { padding: 48px 0 40px; }
+      .hero h1 { font-size: 26px; }
+      .hero p { font-size: 15px; margin-bottom: 24px; }
+
+      /* Stats */
+      .stats-bar { padding: 20px 0; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 0; }
+      .stat-item { padding: 12px 10px; border-right: 1px solid var(--border); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
+      .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+      .stat-num { font-size: 24px; }
+      .stat-label { font-size: 11px; }
+
+      /* Section typography */
+      .section-heading { font-size: 24px; }
+      .section-sub { font-size: 15px; }
+      .section-header { margin-bottom: 36px; }
+
+      /* Grids — all single column on mobile */
+      .features-grid,
+      .security-grid,
+      .pricing-grid,
+      .roadmap-grid,
+      .tech-grid { grid-template-columns: 1fr; }
+      .pricing-grid { max-width: 100%; }
+      .steps-grid { grid-template-columns: 1fr; gap: 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .form-row { grid-template-columns: 1fr; }
+      .phases-grid { grid-template-columns: 1fr; }
+
+      /* Banks */
+      .banks-row { gap: 10px; }
+      .bank-chip { padding: 9px 16px; font-size: 13px; }
+
+      /* Feature cards */
+      .feature-card { padding: 24px 20px; }
+
+      /* Problem / solution */
+      .solution-visual { padding: 28px 20px; }
+      .problem-card { padding: 20px; }
+
+      /* Page heroes */
+      .page-hero { padding: 48px 0 36px; }
+      .page-hero h1 { font-size: 26px; line-height: 1.25; }
+      .page-hero p { font-size: 15px; }
+
+      /* CTA section */
+      .cta-section { padding: 56px 0; }
+      .cta-inner h2 { font-size: 24px; }
+      .cta-inner p { font-size: 15px; }
+
+      /* Pricing */
+      .price-amount { font-size: 36px; }
+
+      /* Contact form */
+      form { padding: 24px 16px; }
+
+      /* Footer */
+      footer { padding: 48px 0 24px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .footer-legal { justify-content: center; gap: 16px; }
+      .footer-socials { margin-top: 4px; }
+
+      /* Quote box */
+      .quote-box { padding: 18px 16px; }
+
+      /* Roles table — show swipe hint on mobile */
+      .roles-table { min-width: 560px; }
+      .table-scroll-hint {
+        display: block;
+        text-align: center;
+        font-size: 11px;
+        color: var(--medium);
+        margin-top: 6px;
+        letter-spacing: 0.04em;
+      }
+    }
+
+    /* ---- Small phones (≤390px) ---- */
+    @media (max-width: 390px) {
+      .hero h1 { font-size: 22px; }
+      .section-heading { font-size: 21px; }
+      .page-hero h1 { font-size: 22px; }
+      .btn-lg { padding: 12px 20px; font-size: 15px; }
+      .stat-num { font-size: 20px; }
+    }
+
+    /* =====================  ABOUT / FEATURES PAGES  ===================== */
+    .page-hero {
+      background: linear-gradient(160deg, #0A1F14, #1B4332);
+      padding: 80px 0;
+    }
+    .page-hero h1 { font-size: 44px; font-weight: 800; color: white; margin-bottom: 16px; line-height: 1.2; }
+    .page-hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 580px; line-height: 1.7; }
+    .page-hero .hero-badge { margin-bottom: 18px; }
+
+    /* Notification bar */
+    .notif-bar {
+      background: var(--primary);
+      color: white;
+      font-size: 13px; font-weight: 500;
+      padding: 10px 0;
+      text-align: center;
+    }
+    .notif-bar a { color: var(--yellow); font-weight: 700; margin-left: 8px; cursor: pointer; }
+
+    /* Divider with text */
+    .divider-text {
+      text-align: center; margin: 56px 0 48px;
+      position: relative;
+    }
+    .divider-text::before {
+      content: '';
+      position: absolute; left: 0; right: 0; top: 50%;
+      height: 1px; background: var(--border);
+    }
+    .divider-text span {
+      background: white; position: relative;
+      padding: 0 20px;
+      color: var(--medium); font-size: 13px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+
+    /* ERP logos */
+    .erp-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 960px) { .erp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px) { .erp-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; } }
+    @media (max-width: 390px) { .erp-grid { grid-template-columns: repeat(2, 1fr); } }
+    .erp-chip {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 10px;
+      text-align: center;
+      font-size: 13px; font-weight: 700; color: var(--navy);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: all var(--transition);
+    }
+    .erp-chip:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+    .erp-chip .erp-icon { font-size: 24px; margin-bottom: 6px; }
+
+    /* Testimonial / quote */
+    .quote-box {
+      background: var(--light-bg);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .quote-box p { font-size: 16px; color: var(--dark); font-style: italic; line-height: 1.7; }
+    .quote-box .quote-author { font-size: 13px; font-weight: 700; color: var(--primary); margin-top: 12px; }
+    /* =====================  COMPLIANCE MODALS  ===================== */
+    .compliance-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0,0,0,0.6);
+    }
+    .modal-inner {
+      background: white;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--primary);
+    }
+    .modal-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+    .modal-close {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.25); }
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      font-size: 14px;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* =====================  SOCIAL PROOF  ===================== */
+    .traction-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .traction-card {
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+    }
+    .traction-num {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .traction-num span { color: var(--accent); }
+    .traction-label {
+      font-size: 14px;
+      color: var(--medium);
+      font-weight: 500;
+    }
+    @media (max-width: 640px) { .traction-grid { grid-template-columns: 1fr; } }
+
+    /* =====================  WHATSAPP FLOATING BUTTON  ===================== */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      text-decoration: none;
+    }
+    .whatsapp-fab:hover {
+      background: #1ebe57;
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+    }
+    .whatsapp-fab svg { width: 30px; height: 30px; fill: white; }
+    .whatsapp-tooltip {
+      position: fixed;
+      bottom: 38px;
+      right: 96px;
+      z-index: 9998;
+      background: var(--navy);
+      color: white;
+      font-size: 13px; font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      box-shadow: var(--shadow);
+    }
+    .whatsapp-tooltip::after {
+      content: '';
+      position: absolute; right: -6px; top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right: none;
+      border-left-color: var(--navy);
+    }
+    .whatsapp-fab:hover + .whatsapp-tooltip { opacity: 1; }
+    @media (max-width: 640px) {
+      .whatsapp-fab { bottom: 18px; right: 18px; width: 52px; height: 52px; }
+      .whatsapp-tooltip { display: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Notification bar -->
+<div class="notif-bar">
+  🎉 OneBank SA is now live in Beta — <a onclick="showPage('contact')">Book a demo today →</a>
+</div>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo" onclick="showPage('home')">
+        <div class="logo-mark">OB</div>
+        <span class="logo-text">One<span>Bank</span> SA</span>
+      </div>
+      <nav>
+        <a id="nav-home"     class="active" onclick="showPage('home')">Home</a>
+        <a id="nav-about"              onclick="showPage('about')">About</a>
+        <a id="nav-features"           onclick="showPage('features')">Features</a>
+        <a id="nav-security"           onclick="showPage('security')">Security</a>
+        <a id="nav-pricing"            onclick="showPage('pricing')">Pricing</a>
+        <a id="nav-contact"            onclick="showPage('contact')">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-outline" href="https://onebank-sa-iota.vercel.app" target="_blank">Login</a>
+        <a class="btn btn-primary" onclick="showPage('contact')">Book Demo</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ============================================================ -->
+<!--  PAGE: HOME                                                  -->
+<!-- ============================================================ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-badge"><span class="dot"></span> Beta Now Live</div>
+          <h1>South Africa's <span>B2B Treasury</span> Management Platform</h1>
+          <p>OneBank SA aggregates your FNB, Standard Bank, Absa, Nedbank, and Capitec accounts into a single secure console — giving your treasury team real-time visibility, structured approvals, and actionable analytics.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg" onclick="showPage('contact')">Book a Demo</button>
+            <a class="btn btn-outline btn-lg" href="https://onebank-sa-iota.vercel.app" target="_blank">Try Live Platform</a>
+          </div>
+        </div>
+        <div class="hero-dashboard">
+          <div class="dash-header">
+            <span class="dash-title">Treasury Console</span>
+            <span class="dash-badge">● Live</span>
+          </div>
+          <div class="dash-banks">
+            <div class="dash-bank">
+              <div class="dash-bank-name">FNB Business</div>
+              <div class="dash-bank-amt">R 1,240,500</div>
+              <div class="dash-bank-chg pos">↑ +R 45,200 today</div>
+            </div>
+            <div class="dash-bank">
+              <div class="dash-bank-name">Standard Bank</div>
+              <div class="dash-bank-amt">R 876,300</div>
+              <div class="dash-bank-chg neg">↓ −R 12,000 today</div>
+            </div>
+            <div class="dash-bank">
+              <div class="dash-bank-name">Absa Corporate</div>
+              <div class="dash-bank-amt">R 502,750</div>
+              <div class="dash-bank-chg pos">↑ +R 8,500 today</div>
+            </div>
+            <div class="dash-bank">
+              <div class="dash-bank-name">Nedbank</div>
+              <div class="dash-bank-amt">R 334,100</div>
+              <div class="dash-bank-chg pos">↑ +R 3,100 today</div>
+            </div>
+          </div>
+          <div class="dash-total">
+            <div>
+              <div class="dash-total-label">Total Cash Position</div>
+              <div class="dash-total-amt">R 2,953,650</div>
+            </div>
+            <div style="text-align:right">
+              <div style="color:rgba(255,255,255,0.7);font-size:11px">Pending Approvals</div>
+              <div style="color:#D4A017;font-weight:800;font-size:18px">3</div>
+            </div>
+          </div>
+          <div class="pending-row">
+            <span class="pending-chip">⏳ 3 Pending Payments</span>
+            <span class="approved-chip">✓ 12 Approved Today</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Major SA Banks Connected</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Role-Based Access Levels</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">15</div>
+          <div class="stat-label">Core Platform Features</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span>R0</span>/mo</div>
+          <div class="stat-label">Beta Tier — Free to Start</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM / SOLUTION -->
+  <section>
+    <div class="container">
+      <div class="problem-grid">
+        <div>
+          <div class="section-tag">The Problem</div>
+          <h2 class="section-heading">SA Businesses Are Drowning in <span>Fragmented Banking</span></h2>
+          <p class="section-sub">Most South African companies bank with multiple institutions — but there's no unified view, no consistent approval process, and no single source of truth.</p>
+          <div style="margin-top:32px">
+            <div class="problem-card">
+              <h4><span class="problem-icon">🔀</span> Fragmented Cash Visibility</h4>
+              <p>Treasury teams log into 3–5 separate banking portals just to see their total cash position — wasting hours and increasing risk of errors.</p>
+            </div>
+            <div class="problem-card">
+              <h4><span class="problem-icon">⚠️</span> Inconsistent Approval Processes</h4>
+              <p>Each bank has different approval workflows. High-value payments slip through without proper multi-level sign-off or audit trails.</p>
+            </div>
+            <div class="problem-card">
+              <h4><span class="problem-icon">📊</span> No Unified Reporting</h4>
+              <p>Building consolidated cash reports requires manual exports from every bank — an error-prone, time-consuming process with no real-time accuracy.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="solution-visual">
+            <div class="sv-title">✅ OneBank SA Solves This</div>
+            <div class="sv-item">
+              <div class="sv-check">🏦</div>
+              <div class="sv-text"><strong>One console</strong> for all your SA bank accounts — FNB, Standard Bank, Absa, Nedbank, and Capitec unified in real time.</div>
+            </div>
+            <div class="sv-item">
+              <div class="sv-check">🔐</div>
+              <div class="sv-text"><strong>Structured, auditable approvals</strong> with configurable multi-level workflows enforced across every payment, regardless of originating bank.</div>
+            </div>
+            <div class="sv-item">
+              <div class="sv-check">📈</div>
+              <div class="sv-text"><strong>Consolidated analytics</strong> with real-time charts, PDF exports, and Excel reports across all connected accounts.</div>
+            </div>
+            <div class="sv-item">
+              <div class="sv-check">🔗</div>
+              <div class="sv-text"><strong>ERP integration</strong> with Sage, SAP, Oracle, Dynamics, Xero, and QuickBooks — eliminating duplicate data entry.</div>
+            </div>
+            <div class="sv-item">
+              <div class="sv-check">📱</div>
+              <div class="sv-text"><strong>Mobile-first responsive design</strong> accessible on any device — desktop, tablet, or phone.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANKS -->
+  <section class="banks-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Supported Banks</div>
+        <h2 class="section-heading">All Major South African Banks, <span>One Platform</span></h2>
+        <p class="section-sub">OneBank SA connects your accounts across South Africa's five largest commercial banks into a single, real-time treasury view.</p>
+      </div>
+      <div class="banks-row">
+        <div class="bank-chip" style="background:var(--bank-fnb);color:white;border-color:var(--bank-fnb)">FNB</div>
+        <div class="bank-chip" style="background:var(--bank-std);color:white;border-color:var(--bank-std)">Standard Bank</div>
+        <div class="bank-chip" style="background:var(--bank-absa);color:white;border-color:var(--bank-absa)">Absa</div>
+        <div class="bank-chip" style="background:var(--bank-ned);color:white;border-color:var(--bank-ned)">Nedbank</div>
+        <div class="bank-chip" style="background:var(--bank-cap);color:white;border-color:var(--bank-cap)">Capitec</div>
+      </div>
+      <div class="divider-text"><span>Planned ERP Integrations</span></div>
+      <div class="erp-grid">
+        <div class="erp-chip"><div class="erp-icon">🟢</div>Sage</div>
+        <div class="erp-chip"><div class="erp-icon">🔵</div>SAP</div>
+        <div class="erp-chip"><div class="erp-icon">🟠</div>Oracle</div>
+        <div class="erp-chip"><div class="erp-icon">🟣</div>Dynamics</div>
+        <div class="erp-chip"><div class="erp-icon">🟡</div>Xero</div>
+        <div class="erp-chip"><div class="erp-icon">🟢</div>QuickBooks</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">How It Works</div>
+        <h2 class="section-heading">From Onboarding to <span>Full Control</span> in 4 Steps</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>Connect Your Banks</h4>
+          <p>Link your FNB, Standard Bank, Absa, Nedbank, and Capitec accounts securely through our unified dashboard.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>Set Up Your Team</h4>
+          <p>Add users with role-based access — Initiators, Reviewers, Approvers, Executors, and Viewers — each with granular permissions.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>Configure Approvals</h4>
+          <p>Define multi-level approval workflows by payment amount range. Enforce governance automatically on every transaction.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h4>Monitor &amp; Report</h4>
+          <p>View consolidated cash positions, manage beneficiaries, generate reports, and export to PDF or Excel in one click.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES PREVIEW -->
+  <section style="background:var(--light-bg)">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Platform Features</div>
+        <h2 class="section-heading">Everything Your Treasury Team <span>Needs</span></h2>
+        <p class="section-sub">15 production-ready features built for South African corporate treasury management.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">🏦</div>
+          <h3>Multi-Bank Aggregation</h3>
+          <p>FNB, Standard Bank, Absa, Nedbank, and Capitec — unified into a single real-time console with consolidated balances.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">⚙️</div>
+          <h3>Payment Workflow Engine</h3>
+          <p>Multi-step approval chains with full status tracking — from initiation through review, approval, and execution.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">🔐</div>
+          <h3>Role-Based Access Control</h3>
+          <p>Six distinct roles with a granular permission matrix ensuring the right people have the right access — nothing more.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-green">📊</div>
+          <h3>Analytics &amp; Reporting</h3>
+          <p>Four interactive chart views with one-click PDF and Excel export for board-ready financial reporting.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-navy">👥</div>
+          <h3>Beneficiary Management</h3>
+          <p>Full profiles, tags, payment history, and bank details for all vendors, suppliers, and employees.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-yellow">🔗</div>
+          <h3>ERP Integration</h3>
+          <p>Native connectors for Sage, SAP, Oracle, Dynamics, Xero, and QuickBooks — eliminating manual data entry.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:36px">
+        <button class="btn btn-primary btn-lg" onclick="showPage('features')">View All Features →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM ANALYTICS -->
+  <section style="background:var(--primary)">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag" style="background:rgba(212,160,23,0.2);color:var(--accent)">Platform Intelligence</div>
+        <h2 class="section-heading" style="color:white">Transparent Performance <span>Metrics</span></h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.75)">OneBank SA publishes a live platform analytics dashboard showing real transaction volumes, bank-level breakdowns, and processing capacity — available to stakeholders and investors without login.</p>
+      </div>
+      <div class="features-grid grid-4" style="margin-bottom:40px">
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius);padding:28px;text-align:center">
+          <div style="font-size:32px;font-weight:800;color:var(--accent)">R684K+</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px">Total Value Processed</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius);padding:28px;text-align:center">
+          <div style="font-size:32px;font-weight:800;color:var(--accent)">5</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px">SA Banks Connected</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius);padding:28px;text-align:center">
+          <div style="font-size:32px;font-weight:800;color:var(--accent)">60s</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px">Metric Refresh Rate</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius);padding:28px;text-align:center">
+          <div style="font-size:32px;font-weight:800;color:var(--accent)">100%</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px">Uptime (Beta)</div>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <a class="btn btn-orange btn-lg" href="https://onebank-sa-iota.vercel.app/metrics" target="_blank">View Live Platform Analytics →</a>
+        <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-top:16px">No login required — public dashboard for stakeholders and investors</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETITIVE LANDSCAPE -->
+  <section class="competitor-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Competitive Advantage</div>
+        <h2 class="section-heading">Why OneBank SA vs. <span>The Alternatives</span></h2>
+      </div>
+      <div class="roles-table-wrap">
+        <table class="roles-table">
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>Type</th>
+              <th>Multi-Bank</th>
+              <th>SA Banks</th>
+              <th>Mobile-First</th>
+              <th>SME-Friendly</th>
+              <th>Approval Workflows</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="onebank-row">
+              <td><strong style="color:var(--primary)">OneBank SA</strong></td>
+              <td>B2B FinTech</td>
+              <td class="yes-cell">✓ Yes</td>
+              <td class="yes-cell">✓ All 5</td>
+              <td class="yes-cell">✓ Yes</td>
+              <td class="yes-cell">✓ Yes</td>
+              <td class="yes-cell">✓ Yes</td>
+            </tr>
+            <tr>
+              <td>Individual Bank Portals</td>
+              <td>Single-bank</td>
+              <td class="no-cell">✗ No</td>
+              <td class="yes-cell">✓ One only</td>
+              <td class="yes-cell">✓ Varies</td>
+              <td class="yes-cell">✓ Yes</td>
+              <td class="no-cell">✗ Limited</td>
+            </tr>
+            <tr>
+              <td>Sage Treasury</td>
+              <td>ERP Module</td>
+              <td class="yes-cell">✓ Yes</td>
+              <td class="no-cell">✗ Limited</td>
+              <td class="no-cell">✗ No</td>
+              <td class="no-cell">✗ Too complex</td>
+              <td class="yes-cell">✓ Yes</td>
+            </tr>
+            <tr>
+              <td>TreasuryOne</td>
+              <td>Enterprise</td>
+              <td class="yes-cell">✓ Yes</td>
+              <td class="no-cell">✗ Limited</td>
+              <td class="no-cell">✗ No</td>
+              <td class="no-cell">✗ Too expensive</td>
+              <td class="yes-cell">✓ Yes</td>
+            </tr>
+            <tr>
+              <td>Standard Bank BizConnect</td>
+              <td>Single-bank</td>
+              <td class="no-cell">✗ No</td>
+              <td class="yes-cell">✓ Std Bank only</td>
+              <td class="yes-cell">✓ Yes</td>
+              <td class="yes-cell">✓ Yes</td>
+              <td class="no-cell">✗ No</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-scroll-hint">← swipe to scroll →</p>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF / TRACTION -->
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Beta Traction</div>
+        <h2 class="section-heading">Built for <span>Real Treasury Teams</span></h2>
+        <p class="section-sub">OneBank SA is actively used in Beta by treasury teams managing significant monthly transaction volumes across multiple SA banks.</p>
+      </div>
+      <div class="traction-grid">
+        <div class="traction-card">
+          <div class="traction-num">5</div>
+          <div class="traction-label">Major SA Banks Aggregated</div>
+        </div>
+        <div class="traction-card">
+          <div class="traction-num">15</div>
+          <div class="traction-label">Production-Ready Features</div>
+        </div>
+        <div class="traction-card">
+          <div class="traction-num">R<span>0</span></div>
+          <div class="traction-label">Cost to Start — Free Beta</div>
+        </div>
+        <div class="traction-card">
+          <div class="traction-num">6</div>
+          <div class="traction-label">Role-Based Access Levels</div>
+        </div>
+        <div class="traction-card">
+          <div class="traction-num">10</div>
+          <div class="traction-label">Development Phases Completed</div>
+        </div>
+        <div class="traction-card">
+          <div class="traction-num">60<span>s</span></div>
+          <div class="traction-label">Live Analytics Refresh Rate</div>
+        </div>
+      </div>
+      <div style="margin-top:48px;background:var(--primary);border-radius:var(--radius);padding:32px;color:white;text-align:center">
+        <p style="font-size:16px;color:rgba(255,255,255,0.85);max-width:640px;margin:0 auto 20px;line-height:1.7">
+          "Currently in private Beta with treasury teams managing <strong style="color:var(--accent)">R2M+ monthly</strong> across <strong style="color:var(--accent)">3+ banks</strong> — all from a single OneBank SA console."
+        </p>
+        <a href="https://onebank-sa-iota.vercel.app/metrics" target="_blank" class="btn btn-orange">View Live Platform Analytics →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <h2>Ready to Consolidate Your Treasury?</h2>
+        <p>Join South African businesses already using OneBank SA to manage their banking from a single, secure platform.</p>
+        <div class="cta-actions">
+          <button class="btn btn-white btn-lg" onclick="showPage('contact')">Book a Free Demo</button>
+          <a class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.4)" href="https://onebank-sa-iota.vercel.app" target="_blank">Try the Live Platform</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ============================================================ -->
+<!--  PAGE: ABOUT                                                 -->
+<!-- ============================================================ -->
+<div id="page-about" class="page">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="hero-badge"><span class="dot"></span> Beta v1.0.0 — April 2026</div>
+      <h1>Built for South African<br>Corporate Treasury Teams</h1>
+      <p>OneBank SA was created to solve a problem every multi-banked SA business faces — fragmented banking, inconsistent governance, and zero unified visibility.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="problem-grid">
+        <div>
+          <div class="section-tag">Our Mission</div>
+          <h2 class="section-heading">One Platform. <span>All Your Banks.</span></h2>
+          <p class="section-sub" style="margin-bottom:24px">South African businesses banking with multiple institutions face fragmented cash visibility, inconsistent approval processes, and no unified reporting.</p>
+          <p class="section-sub">OneBank SA solves this by providing a single secure platform that consolidates all banking activity, enforces governance, and delivers actionable financial intelligence — without replacing your existing bank relationships.</p>
+          <div class="quote-box">
+            <p>"Our goal is to give every South African CFO and treasury manager the same unified visibility that global multinationals have — at a price point that works for SMEs and mid-market corporates alike."</p>
+            <div class="quote-author">— Bonginkosi Masuku, Founder &amp; CEO</div>
+          </div>
+        </div>
+        <div>
+          <div class="section-tag">Product Overview</div>
+          <h2 class="section-heading" style="font-size:24px">Key Facts</h2>
+          <div style="margin-top:20px">
+            <div class="problem-card">
+              <h4><span class="solution-icon">🏢</span> Category</h4>
+              <p>B2B FinTech — Treasury Management &amp; Banking Aggregation</p>
+            </div>
+            <div class="problem-card">
+              <h4><span class="solution-icon">🎯</span> Target Market</h4>
+              <p>South African SMEs and mid-market corporates banking with multiple institutions</p>
+            </div>
+            <div class="problem-card">
+              <h4><span class="solution-icon">💰</span> Business Model</h4>
+              <p>SaaS — monthly/annual subscription per organisation, tiered by users, banks, and transaction volume</p>
+            </div>
+            <div class="problem-card">
+              <h4><span class="solution-icon">🔗</span> Live URL</h4>
+              <p><a href="https://onebank-sa-iota.vercel.app" target="_blank" style="color:var(--primary);font-weight:600">onebank-sa-iota.vercel.app</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder-section">
+    <div class="container">
+      <div class="section-header text-center" style="margin-bottom:40px">
+        <div class="section-tag">Leadership</div>
+        <h2 class="section-heading">Meet the <span>Founder</span></h2>
+        <p class="section-sub">OneBank SA was built by an enterprise risk and governance leader who spent 16+ years working alongside CFOs and treasury teams at South Africa's largest organisations — and saw the problem up close.</p>
+      </div>
+      <div class="founder-card">
+        <div style="text-align:center">
+          <img src="founder.jpg" alt="Bonginkosi Gerald Masuku, MBA — Founder &amp; CEO, OneBank SA" class="founder-avatar" />
+        </div>
+        <div class="founder-meta">
+          <div class="founder-name">Bonginkosi Masuku</div>
+          <div class="founder-title">Founder &amp; CEO, OneBank SA &nbsp;·&nbsp; MBA (GIBS, University of Pretoria)</div>
+          <p class="founder-bio">
+            Bonginkosi is a governance, risk, and enterprise operations leader with over 16 years of experience across South Africa's most complex institutions — including Transnet Freight Rail, where he served as Head of Risk &amp; Safety overseeing crisis management and compliance for national freight rail operations, and as Senior Manager of Risk &amp; Business Continuity. He has also provided specialised consulting to the Central Energy Fund, Strategic Fuel Fund, and PetroSA in the oil &amp; gas sector, and currently leads enterprise-wide risk and business continuity governance for Saudi Arabia's national railway operator.
+          </p>
+          <p class="founder-bio" style="margin-top:-8px">
+            Having spent years reporting directly to CFOs, VPs, and board-level leadership on financial risk exposure and operational resilience, Bonginkosi experienced first-hand how South African multi-banked organisations struggle with fragmented treasury visibility, inconsistent approval governance, and zero unified reporting. OneBank SA was built to solve exactly that problem — bringing enterprise-grade treasury management to SA businesses at a price point that actually works.
+          </p>
+          <div class="founder-creds">
+            <span class="founder-cred">MBA — GIBS, University of Pretoria</span>
+            <span class="founder-cred">IRMP™ Certified</span>
+            <span class="founder-cred">GRCP™ &amp; GRCA™</span>
+            <span class="founder-cred">ISO 22301 Lead Implementer</span>
+            <span class="founder-cred">ISO 31000 Practitioner</span>
+            <span class="founder-cred">AI Business Strategy — Johns Hopkins</span>
+          </div>
+          <a class="founder-linkedin" href="https://www.linkedin.com/in/bonginkosi-masuku-mba-6802315a" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            View LinkedIn Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVELOPMENT PHASES -->
+  <section style="background:var(--light-bg)">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Development History</div>
+        <h2 class="section-heading">10 Phases. <span>All Complete.</span></h2>
+        <p class="section-sub">OneBank SA has completed all 10 planned development phases — from UI/UX design to full production deployment on Vercel and Neon.</p>
+      </div>
+      <div class="phases-grid">
+        <div class="phase-item"><div class="phase-num">1</div><div class="phase-text"><h4>UI/UX &amp; Design System</h4><p class="phase-done">✓ Complete</p></div></div>
+        <div class="phase-item"><div class="phase-num">2</div><div class="phase-text"><h4>Authentication &amp; RBAC</h4><p class="phase-done">✓ Complete</p></div></div>
+        <div class="phase-item"><div class="phase-num">3</div><div class="phase-text"><h4>Database &amp; API Layer</h4><p class="phase-done">✓ Complete</p></div></div>
+        <div class="phase-item"><div class="phase-num">4</div><div class="phase-text"><h4>Payment Workflow Engine</h4><p class="phase-done">✓ Complete</p></div></div>
+        <div class="phase-item"><div class="phase-num">5</div><div class="phase-text"><h4>Analytics &amp; Reporting</h4><p class="phase-done">✓ Complete</p></div></div>
+        <div class="phase-item"><div class="phase-num">6</div><div class="phase-text"><h4>ERP Integration</h4><p class="phase-done">✓ Complete</p></div></div>
+        <div class="phase-item"><div class="phase-num">7</div><div class="phase-text"><h4>Notifications, Exports &amp; User Management</h4><p class="phase-done">✓ Complete</p></div></div>
+        <div class="phase-item"><div class="phase-num">8</div><div class="phase-text"><h4>Full Settings Suite (8 sections)</h4><p class="phase-done">✓ Complete</p></div></div>
+        <div class="phase-item"><div class="phase-num">9</div><div class="phase-text"><h4>Security Hardening</h4><p class="phase-done">✓ Complete</p></div></div>
+        <div class="phase-item"><div class="phase-num">10</div><div class="phase-text"><h4>Production Deployment (Vercel + Neon)</h4><p class="phase-done">✓ Complete</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Technology Stack</div>
+        <h2 class="section-heading">Built on <span>Modern, Proven Infrastructure</span></h2>
+        <p class="section-sub">A cloud-native, full-stack Next.js application with enterprise-grade tooling — deployed on Vercel with Neon PostgreSQL.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card"><div class="tech-icon">⚡</div><h4>Next.js 16</h4><p>React framework with App Router &amp; Turbopack</p></div>
+        <div class="tech-card"><div class="tech-icon">🔷</div><h4>TypeScript</h4><p>Strict mode — type safety across entire codebase</p></div>
+        <div class="tech-card"><div class="tech-icon">🎨</div><h4>Tailwind CSS v4</h4><p>Utility-first responsive styling</p></div>
+        <div class="tech-card"><div class="tech-icon">🗄️</div><h4>Neon PostgreSQL</h4><p>Serverless PostgreSQL database (eu-west-2)</p></div>
+        <div class="tech-card"><div class="tech-icon">🔐</div><h4>NextAuth.js v5</h4><p>JWT session management &amp; credential validation</p></div>
+        <div class="tech-card"><div class="tech-icon">🏗️</div><h4>Prisma ORM</h4><p>Type-safe database access &amp; migrations</p></div>
+        <div class="tech-card"><div class="tech-icon">🚀</div><h4>Vercel</h4><p>CI/CD, serverless functions, global CDN</p></div>
+        <div class="tech-card"><div class="tech-icon">📊</div><h4>Recharts</h4><p>Analytics charts — pie, bar, line visualisations</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container"><div class="cta-inner">
+      <h2>Want to Learn More?</h2>
+      <p>Get a personalised walkthrough of the OneBank SA platform from our founding team.</p>
+      <div class="cta-actions">
+        <button class="btn btn-white btn-lg" onclick="showPage('contact')">Book a Demo</button>
+        <button class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.4)" onclick="showPage('pricing')">View Pricing</button>
+      </div>
+    </div></div>
+  </section>
+
+</div><!-- /page-about -->
+
+
+<!-- ============================================================ -->
+<!--  PAGE: FEATURES                                              -->
+<!-- ============================================================ -->
+<div id="page-features" class="page">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="hero-badge"><span class="dot"></span> 15 Features — All Live</div>
+      <h1>Everything Your Treasury<br>Team Needs, <span style="color:#6EE7B7">Built In</span></h1>
+      <p>From multi-bank aggregation to ERP integration — every feature is production-ready and available in the current Beta release.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Core Features</div>
+        <h2 class="section-heading">15 Production-Ready <span>Platform Features</span></h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">🏦</div>
+          <h3>Multi-Bank Aggregation</h3>
+          <p>FNB, Standard Bank, Absa, Nedbank, and Capitec — all unified into a single real-time console with consolidated balances and cross-bank visibility.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">⚙️</div>
+          <h3>Payment Workflow Engine</h3>
+          <p>Multi-step, configurable approval chains with full status tracking. Every payment moves through Initiate → Review → Approve → Execute with complete auditability.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">🔐</div>
+          <h3>Role-Based Access Control</h3>
+          <p>Six distinct roles — Admin, Initiator, Reviewer, Approver, Executor, Viewer — each with a precisely defined permission matrix enforced at API level.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-green">📊</div>
+          <h3>Analytics &amp; Reporting</h3>
+          <p>Four interactive chart views (pie, bar, line, summary). One-click PDF generation with html2canvas and jsPDF, plus Excel export via SheetJS.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-navy">👥</div>
+          <h3>Beneficiary Management</h3>
+          <p>Full beneficiary profiles with tags, payment history, bank details, and account verification — for vendors, suppliers, and employees.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-yellow">🔗</div>
+          <h3>ERP Integration</h3>
+          <p>Native connectors for Sage, SAP, Oracle, Dynamics 365, Xero, and QuickBooks. Import invoices directly into payment workflows.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">🔔</div>
+          <h3>Real-Time Notifications</h3>
+          <p>Bell icon with unread count and 30-second polling for payment status changes, approvals required, and system events — across all connected accounts.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">👤</div>
+          <h3>User Management</h3>
+          <p>Admin-only user administration — add, edit, deactivate, and delete users with full role assignment and transfer limit configuration.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">⚙️</div>
+          <h3>Settings Suite</h3>
+          <p>Eight configurable settings sections covering bank connections, approval workflows, transfer limits, notifications, display preferences, and QR Pay authentication.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-green">🌙</div>
+          <h3>Dark Mode</h3>
+          <p>Full light, dark, and system-adaptive theme switching — consistent across every dashboard component and data table.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-navy">📋</div>
+          <h3>Activity Log &amp; Audit Trail</h3>
+          <p>Complete audit trail of every system event — action type, description, user name, IP address, status, and full timestamp. Searchable, filterable, and POPIA-ready.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">🔒</div>
+          <h3>Transfer Limits</h3>
+          <p>Role-based payment amount restrictions — set daily, per-transaction, and monthly limits per user role to enforce governance on every payment.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-yellow">📈</div>
+          <h3>Platform Analytics Dashboard</h3>
+          <p>Public stakeholder dashboard showing real-time transaction volume, value processed per bank, peak usage patterns, and payment status breakdowns — auto-refreshed every 60 seconds.</p>
+          <a href="https://onebank-sa-iota.vercel.app/metrics" target="_blank" style="display:inline-block;margin-top:8px;font-size:12px;color:var(--primary);font-weight:700">View Live Dashboard →</a>
+          <span class="feature-status">✓ Live</span>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-green">💬</div>
+          <h3>Beta Feedback System</h3>
+          <p>In-app star rating and multi-category feedback collection with an admin-only dashboard showing response analytics, ratings breakdown, and tester insights.</p>
+          <span class="feature-status">✓ Live</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLES MATRIX -->
+  <section class="roles-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Access Control</div>
+        <h2 class="section-heading">Granular <span>Permission Matrix</span></h2>
+        <p class="section-sub">Every user role has precisely defined permissions, enforced at both the UI and API layer — ensuring correct governance at all times.</p>
+      </div>
+      <div class="roles-table-wrap">
+        <table class="roles-table">
+          <thead>
+            <tr>
+              <th>Permission</th>
+              <th>Admin</th>
+              <th>Initiator</th>
+              <th>Reviewer</th>
+              <th>Approver</th>
+              <th>Executor</th>
+              <th>Viewer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Initiate Payments</td><td class="yes-cell">✓</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="no-cell">—</td></tr>
+            <tr><td>Review Payments</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="no-cell">—</td></tr>
+            <tr><td>Approve Payments</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="no-cell">—</td></tr>
+            <tr><td>Execute Payments</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="yes-cell">✓</td><td class="no-cell">—</td></tr>
+            <tr><td>Manage Users</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="no-cell">—</td></tr>
+            <tr><td>View Analytics</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="yes-cell">✓</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="yes-cell">✓</td></tr>
+            <tr><td>Manage Beneficiaries</td><td class="yes-cell">✓</td><td class="yes-cell">✓</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="no-cell">—</td><td class="no-cell">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-scroll-hint">← swipe to scroll →</p>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Product Roadmap</div>
+        <h2 class="section-heading">What's <span>Coming Next</span></h2>
+        <p class="section-sub">Our post-beta roadmap takes OneBank SA from MVP to enterprise-grade platform, with live bank connectivity and ISO 27001 certification.</p>
+      </div>
+      <div class="roadmap-grid">
+        <div class="roadmap-card v1">
+          <div class="roadmap-version">Version 1.1</div>
+          <h3>Post-Beta Enhancements</h3>
+          <div class="quarter">Q2 2026</div>
+          <div class="roadmap-item">Stitch Money API — live SA bank data</div>
+          <div class="roadmap-item">Two-factor authentication (2FA) for Admin &amp; Approver</div>
+          <div class="roadmap-item">Forced password change on first login</div>
+          <div class="roadmap-item">POPIA consent banner &amp; privacy policy</div>
+          <div class="roadmap-item">MT940/MT942 bank statement parser</div>
+          <div class="roadmap-item">Bulk payment upload via CSV/Excel</div>
+        </div>
+        <div class="roadmap-card v2">
+          <div class="roadmap-version">Version 1.2</div>
+          <h3>Growth Features</h3>
+          <div class="quarter">Q3 2026</div>
+          <div class="roadmap-item">Real-time websocket notifications</div>
+          <div class="roadmap-item">Progressive Web App (PWA) for mobile</div>
+          <div class="roadmap-item">Advanced analytics with forecasting</div>
+          <div class="roadmap-item">Multi-organisation / multi-tenant</div>
+          <div class="roadmap-item">Automated reconciliation engine</div>
+          <div class="roadmap-item">Direct bank API partnerships</div>
+        </div>
+        <div class="roadmap-card v3">
+          <div class="roadmap-version">Version 2.0</div>
+          <h3>Enterprise Platform</h3>
+          <div class="quarter">Q4 2026</div>
+          <div class="roadmap-item">ISO 27001 certification</div>
+          <div class="roadmap-item">SOC 2 Type II audit</div>
+          <div class="roadmap-item">SA-region database (full POPIA)</div>
+          <div class="roadmap-item">SARB payment service provider licence</div>
+          <div class="roadmap-item">White-label offering for banks</div>
+          <div class="roadmap-item">Public API for third-party integrations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container"><div class="cta-inner">
+      <h2>See All Features Live</h2>
+      <p>Try the full OneBank SA platform now — no installation required.</p>
+      <div class="cta-actions">
+        <a class="btn btn-white btn-lg" href="https://onebank-sa-iota.vercel.app" target="_blank">Open Live Platform</a>
+        <button class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.4)" onclick="showPage('contact')">Book a Demo</button>
+      </div>
+    </div></div>
+  </section>
+
+</div><!-- /page-features -->
+
+
+<!-- ============================================================ -->
+<!--  PAGE: SECURITY                                              -->
+<!-- ============================================================ -->
+<div id="page-security" class="page">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="hero-badge"><span class="dot"></span> Security Architecture</div>
+      <h1>Enterprise-Grade Security<br>for South African <span style="color:#6EE7B7">Treasury</span></h1>
+      <p>OneBank SA is built with security at every layer — from bcrypt-hashed passwords and JWT sessions to API-level role enforcement and a complete audit trail.</p>
+    </div>
+  </div>
+
+  <section class="security-section">
+    <div class="container">
+      <div class="section-header text-center" style="margin-bottom:48px">
+        <div class="section-tag" style="background:rgba(27,67,50,0.15);color:#6EE7B7">Security Controls</div>
+        <h2 class="section-heading" style="color:white">Defence in <span style="color:var(--primary)">Depth</span></h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.7);margin:0 auto">Multiple independent security layers ensure your treasury data is protected at rest, in transit, and at the application level.</p>
+      </div>
+      <div class="security-grid">
+        <div class="security-card">
+          <h4><div class="sec-icon">🔑</div> Authentication</h4>
+          <p>NextAuth.js v5 with credentials provider. JWT tokens with server-side validation. Session-based authentication with secure cookie handling.</p>
+          <div class="sec-badge">NextAuth.js v5</div>
+        </div>
+        <div class="security-card">
+          <h4><div class="sec-icon">🔒</div> Password Security</h4>
+          <p>All passwords are hashed using bcrypt with cost factor 12 — the industry standard. Plain-text passwords are never stored or logged anywhere in the system.</p>
+          <div class="sec-badge">bcrypt cost factor 12</div>
+        </div>
+        <div class="security-card">
+          <h4><div class="sec-icon">🛡️</div> Route Protection</h4>
+          <p>proxy.ts middleware enforces authentication on all dashboard routes. requireAuth() and requireRole() guards protect every sensitive API endpoint.</p>
+          <div class="sec-badge">Centralised enforcement</div>
+        </div>
+        <div class="security-card">
+          <h4><div class="sec-icon">🌐</div> Transport Security</h4>
+          <p>TLS/HTTPS enforced by Vercel. HTTP requests automatically redirect to HTTPS. Neon PostgreSQL database connection requires SSL (sslmode=require).</p>
+          <div class="sec-badge">TLS enforced</div>
+        </div>
+        <div class="security-card">
+          <h4><div class="sec-icon">📋</div> Security Headers</h4>
+          <p>HSTS (max-age=63072000), X-Frame-Options: SAMEORIGIN, X-Content-Type-Options: nosniff, Referrer-Policy, Permissions-Policy, and DNS-Prefetch-Control — all applied via next.config.ts.</p>
+          <div class="sec-badge">OWASP hardened</div>
+        </div>
+        <div class="security-card">
+          <h4><div class="sec-icon">📝</div> Complete Audit Trail</h4>
+          <p>ActivityLog model tracks every system event — action type, description, user name, entity, IP address, status, and full timestamp. Searchable and filterable in the admin UI.</p>
+          <div class="sec-badge">Full audit log</div>
+        </div>
+        <div class="security-card">
+          <h4><div class="sec-icon">⏱️</div> Rate Limiting</h4>
+          <p>Upstash Redis-backed rate limiting on authentication endpoints — 10 requests per 10 seconds per IP. Prevents brute force attacks in production with graceful local fallback.</p>
+          <div class="sec-badge">Upstash Redis</div>
+        </div>
+        <div class="security-card">
+          <h4><div class="sec-icon">💰</div> Transfer Limits</h4>
+          <p>Role-based payment amount restrictions enforced at API level — daily, per-transaction, and monthly limits configurable per user role to prevent unauthorised high-value payments.</p>
+          <div class="sec-badge">Role-enforced</div>
+        </div>
+        <div class="security-card">
+          <h4><div class="sec-icon">📱</div> QR Pay Authentication</h4>
+          <p>Configurable authentication method for QR payments — choose from Biometric, PIN, Password, or OTP. Security level indicator shows risk rating per method selected.</p>
+          <div class="sec-badge">Configurable</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA GOVERNANCE -->
+  <section style="background:var(--light-bg)">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Data Governance</div>
+        <h2 class="section-heading">POPIA Compliance &amp; <span>Data Privacy</span></h2>
+        <p class="section-sub">OneBank SA processes personal and financial data and takes its obligations under South Africa's Protection of Personal Information Act seriously.</p>
+      </div>
+      <div class="roles-table-wrap">
+        <table class="roles-table">
+          <thead>
+            <tr><th>POPIA Requirement</th><th>Status</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Lawful processing</td><td class="yes-cell">✓ Compliant</td><td>Business legitimate interest</td></tr>
+            <tr><td>Purpose limitation</td><td class="yes-cell">✓ Compliant</td><td>Data used only for treasury management</td></tr>
+            <tr><td>Data minimisation</td><td class="yes-cell">✓ Compliant</td><td>Only necessary fields collected</td></tr>
+            <tr><td>Data subject rights</td><td style="color:var(--orange);font-weight:700">⚡ Partial</td><td>Deletion exists; formal policy needed</td></tr>
+            <tr><td>Security safeguards</td><td class="yes-cell">✓ Compliant</td><td>Encryption, access controls, audit logs</td></tr>
+            <tr><td>Privacy notice</td><td style="color:var(--orange);font-weight:700">⏳ Pending</td><td>Required before full production launch (v1.1)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-scroll-hint">← swipe to scroll →</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Data Classification</div>
+        <h2 class="section-heading">What Data We <span>Collect &amp; Process</span></h2>
+      </div>
+      <div class="features-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">👤</div>
+          <h3>User Identity</h3>
+          <p>Name, email address, role assignment, and bcrypt-hashed password. Classification: Personal data under POPIA.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">💳</div>
+          <h3>Financial Data</h3>
+          <p>Bank account numbers, real-time balances, payment amounts, and transaction metadata. Classification: Sensitive financial data.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">🏢</div>
+          <h3>Beneficiary Data</h3>
+          <p>Vendor/supplier/employee names, bank details, and payment history. Classification: Personal and financial combined.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-green">📋</div>
+          <h3>Audit Logs</h3>
+          <p>System actions, timestamps, IP addresses, and entity references. Classification: Operational — retained for compliance and dispute resolution.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-navy">💬</div>
+          <h3>Feedback Data</h3>
+          <p>In-app star ratings, category selections, and optional comments from beta testers. Classification: Non-sensitive operational data.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-yellow">🔗</div>
+          <h3>ERP Connection Data</h3>
+          <p>API connection credentials and imported invoice data from connected ERP systems. Classification: Sensitive business data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container"><div class="cta-inner">
+      <h2>Security Questions?</h2>
+      <p>Our team is happy to walk through the security architecture in detail for your compliance team or auditors.</p>
+      <div class="cta-actions">
+        <button class="btn btn-white btn-lg" onclick="showPage('contact')">Speak to the Team</button>
+      </div>
+    </div></div>
+  </section>
+
+</div><!-- /page-security -->
+
+
+<!-- ============================================================ -->
+<!--  PAGE: PRICING                                               -->
+<!-- ============================================================ -->
+<div id="page-pricing" class="page">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="hero-badge"><span class="dot"></span> Transparent Pricing</div>
+      <h1>Simple Pricing for<br>Every Stage of <span style="color:#6EE7B7">Growth</span></h1>
+      <p>Start free during Beta. Scale as your organisation grows. No hidden fees, no long-term lock-in.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Pricing Tiers</div>
+        <h2 class="section-heading">Choose Your <span>Plan</span></h2>
+        <p class="section-sub">All plans include full platform access. Pricing scales with users, connected banks, and transaction volume.</p>
+      </div>
+      <div class="pricing-grid">
+        <!-- Beta -->
+        <div class="price-card">
+          <div class="price-tier">Beta</div>
+          <div class="price-amount">R0</div>
+          <div class="price-period">/ month — Free during Beta</div>
+          <div class="price-features">
+            <div class="price-feat"><span class="price-check">✓</span> All 15 platform features</div>
+            <div class="price-feat"><span class="price-check">✓</span> Up to 5 connected banks</div>
+            <div class="price-feat"><span class="price-check">✓</span> Up to 10 users</div>
+            <div class="price-feat"><span class="price-check">✓</span> Up to 50,000 transactions/month</div>
+            <div class="price-feat"><span class="price-check">✓</span> 50–100 concurrent users</div>
+            <div class="price-feat"><span class="price-check">✓</span> PDF &amp; Excel reporting</div>
+            <div class="price-feat"><span class="price-check">✓</span> Full audit trail</div>
+          </div>
+          <button class="btn btn-outline" style="width:100%" onclick="showPage('contact')">Get Started Free</button>
+        </div>
+        <!-- Growth (featured) -->
+        <div class="price-card featured">
+          <div class="price-badge">Most Popular</div>
+          <div class="price-tier">Growth</div>
+          <div class="price-amount">R730</div>
+          <div class="price-period">/ month (Neon Launch + Vercel Pro)</div>
+          <div class="price-features">
+            <div class="price-feat"><span class="price-check">✓</span> Everything in Beta</div>
+            <div class="price-feat"><span class="price-check">✓</span> Live SA bank data (Stitch)</div>
+            <div class="price-feat"><span class="price-check">✓</span> Two-factor authentication</div>
+            <div class="price-feat"><span class="price-check">✓</span> Real-time websocket notifications</div>
+            <div class="price-feat"><span class="price-check">✓</span> Multi-organisation support</div>
+            <div class="price-feat"><span class="price-check">✓</span> Advanced analytics</div>
+            <div class="price-feat"><span class="price-check">✓</span> Priority support</div>
+          </div>
+          <button class="btn btn-white" style="width:100%" onclick="showPage('contact')">Get Started</button>
+        </div>
+        <!-- Enterprise -->
+        <div class="price-card">
+          <div class="price-tier">Enterprise</div>
+          <div class="price-amount" style="font-size:28px;padding-top:7px">Custom</div>
+          <div class="price-period">/ month — contact for pricing</div>
+          <div class="price-features">
+            <div class="price-feat"><span class="price-check">✓</span> Everything in Growth</div>
+            <div class="price-feat"><span class="price-check">✓</span> ISO 27001 certification</div>
+            <div class="price-feat"><span class="price-check">✓</span> SOC 2 Type II audit</div>
+            <div class="price-feat"><span class="price-check">✓</span> SA-region database (POPIA)</div>
+            <div class="price-feat"><span class="price-check">✓</span> White-label option</div>
+            <div class="price-feat"><span class="price-check">✓</span> Dedicated SLA support</div>
+            <div class="price-feat"><span class="price-check">✓</span> Public API access</div>
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="showPage('contact')">Contact Sales</button>
+        </div>
+      </div>
+
+      <!-- Revenue streams -->
+      <div style="margin-top:64px">
+        <div class="section-header text-center">
+          <div class="section-tag">Revenue Streams</div>
+          <h2 class="section-heading">Beyond the <span>Subscription</span></h2>
+        </div>
+        <div class="features-grid grid-4">
+          <div class="feature-card">
+            <div class="feature-icon icon-blue">💳</div>
+            <h3>Subscription Fees</h3>
+            <p>Per-organisation monthly or annual fee — the core recurring revenue stream.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon icon-orange">👤</div>
+            <h3>Per-Seat Licensing</h3>
+            <p>Additional fee per user beyond the base tier inclusion — scales with your team.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon icon-purple">🔗</div>
+            <h3>Premium Integrations</h3>
+            <p>ERP connectors for Sage, SAP, Oracle, and Dynamics available as premium add-ons.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon icon-green">🎯</div>
+            <h3>Enterprise Support</h3>
+            <p>Dedicated SLA packages with guaranteed response times and a named account manager.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container"><div class="cta-inner">
+      <h2>Start Free Today</h2>
+      <p>No credit card required. Full platform access during the Beta period — completely free.</p>
+      <div class="cta-actions">
+        <button class="btn btn-white btn-lg" onclick="showPage('contact')">Book a Demo</button>
+        <a class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.4)" href="https://onebank-sa-iota.vercel.app" target="_blank">Try for Free</a>
+      </div>
+    </div></div>
+  </section>
+
+</div><!-- /page-pricing -->
+
+
+<!-- ============================================================ -->
+<!--  PAGE: CONTACT                                               -->
+<!-- ============================================================ -->
+<div id="page-contact" class="page">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="hero-badge"><span class="dot"></span> Get in Touch</div>
+      <h1>Book a Demo or<br>Ask Us <span style="color:#6EE7B7">Anything</span></h1>
+      <p>Our team is ready to walk you through the OneBank SA platform and answer any questions about features, security, or pricing.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Let's Talk Treasury</h3>
+          <p>Whether you're a CFO evaluating platforms, a treasury manager ready to consolidate your banking, or an investor looking to learn more — we'd love to hear from you.</p>
+          <div class="contact-item">
+            <div class="c-icon">🌐</div>
+            <div>
+              <div class="c-label">Live Platform</div>
+              <div class="c-value"><a href="https://onebank-sa-iota.vercel.app" target="_blank" style="color:var(--primary)">onebank-sa-iota.vercel.app</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">📧</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-value"><a href="mailto:bongimsk80@gmail.com" style="color:var(--primary)">bongimsk80@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">🇿🇦</div>
+            <div>
+              <div class="c-label">Jurisdiction</div>
+              <div class="c-value">South Africa — POPIA compliant</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">🚀</div>
+            <div>
+              <div class="c-label">Current Status</div>
+              <div class="c-value">Beta v1.0.0 — Live &amp; accepting users</div>
+            </div>
+          </div>
+          <div style="margin-top:32px">
+            <p style="font-size:14px;color:var(--medium);line-height:1.7;font-style:italic">
+              OneBank SA is currently in Beta. All features are live and available. We are actively onboarding anchor clients and welcome direct outreach from CFOs, treasury managers, and finance directors.
+            </p>
+          </div>
+        </div>
+        <form id="demoForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input id="firstName" type="text" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input id="lastName" type="text" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Work Email *</label>
+            <input id="email" type="email" placeholder="john@company.co.za" required />
+          </div>
+          <div class="form-group">
+            <label>Telephone Number</label>
+            <input id="phone" type="tel" placeholder="+27 11 000 0000" />
+          </div>
+          <div class="form-group">
+            <label>Company Name *</label>
+            <input id="company" type="text" placeholder="Your organisation name" required />
+          </div>
+          <div class="form-group">
+            <label>Your Role</label>
+            <select id="role">
+              <option value="">Select your role</option>
+              <option>CFO / Finance Director</option>
+              <option>Treasury Manager</option>
+              <option>Financial Controller</option>
+              <option>CEO / MD</option>
+              <option>IT / Systems Manager</option>
+              <option>Investor / Partner</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>How many banks does your company use?</label>
+            <select id="banks">
+              <option value="">Select</option>
+              <option>2 banks</option>
+              <option>3 banks</option>
+              <option>4 banks</option>
+              <option>5 banks</option>
+              <option>More than 5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message / Questions</label>
+            <textarea id="message" placeholder="Tell us about your treasury management needs or any questions you have about OneBank SA..."></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="btn btn-primary btn-lg" style="width:100%">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-contact -->
+
+
+<!-- ===================== COMPLIANCE MODALS ===================== -->
+<div id="modal-overlay" onclick="closeModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:999;align-items:center;justify-content:center;padding:24px"></div>
+
+<div id="modal-popia" class="compliance-modal" style="display:none">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <h3>POPIA Policy</h3>
+      <button onclick="closeModal()" class="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Protection of Personal Information Act (POPIA) — OneBank SA</strong></p>
+      <p style="margin-top:12px">OneBank SA processes personal and financial data in accordance with South Africa's Protection of Personal Information Act, Act 4 of 2013 (POPIA).</p>
+      <p style="margin-top:12px"><strong>Data We Process:</strong> Name, email address, role, bank account information, transaction data, and audit logs.</p>
+      <p style="margin-top:12px"><strong>Lawful Basis:</strong> Legitimate business interest for treasury management purposes.</p>
+      <p style="margin-top:12px"><strong>Purpose Limitation:</strong> Data is collected solely for the purpose of treasury management and is not shared with third parties for marketing purposes.</p>
+      <p style="margin-top:12px"><strong>Data Subject Rights:</strong> You have the right to access, correct, and request deletion of your personal information. Contact bongimsk80@gmail.com to exercise these rights.</p>
+      <p style="margin-top:12px"><strong>Security Safeguards:</strong> All data is encrypted in transit (TLS/HTTPS) and at rest. Passwords are bcrypt-hashed with cost factor 12. A complete audit trail is maintained.</p>
+      <p style="margin-top:12px"><strong>Data Residency:</strong> Currently hosted on Neon PostgreSQL (eu-west-2, AWS Ireland). SA-region hosting is planned for v2.0.</p>
+      <p style="margin-top:12px;font-style:italic;color:#718096">This policy will be updated with a full formal Privacy Notice before the v1.1 launch. For queries: bongimsk80@gmail.com</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-privacy" class="compliance-modal" style="display:none">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <h3>Privacy Notice</h3>
+      <button onclick="closeModal()" class="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <p><strong>OneBank SA Privacy Notice — Beta v1.0.0</strong></p>
+      <p style="margin-top:12px">This privacy notice describes how OneBank South Africa collects, uses, and protects your personal information.</p>
+      <p style="margin-top:12px"><strong>Who We Are:</strong> OneBank SA is a B2B treasury management platform operated in South Africa.</p>
+      <p style="margin-top:12px"><strong>What We Collect:</strong> Account credentials, bank account details, payment data, transaction history, and usage logs.</p>
+      <p style="margin-top:12px"><strong>How We Use It:</strong> To provide treasury management services, enforce approval workflows, and generate financial reports.</p>
+      <p style="margin-top:12px"><strong>Who We Share It With:</strong> We do not sell or share personal data with third parties. Infrastructure providers (Vercel, Neon) process data under data processing agreements.</p>
+      <p style="margin-top:12px"><strong>How Long We Keep It:</strong> User data is retained for the duration of the business relationship. Audit logs are retained for compliance purposes.</p>
+      <p style="margin-top:12px"><strong>Your Rights:</strong> Access, rectification, deletion, and portability of your data. Contact bongimsk80@gmail.com.</p>
+      <p style="margin-top:12px;font-style:italic;color:#718096">A full formal Privacy Policy will be published with v1.1. Beta v1.0.0 — April 2026</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-terms" class="compliance-modal" style="display:none">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <h3>Terms of Service</h3>
+      <button onclick="closeModal()" class="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <p><strong>OneBank SA Terms of Service — Beta v1.0.0</strong></p>
+      <p style="margin-top:12px"><strong>Beta Usage:</strong> OneBank SA is currently in Beta. The platform is provided "as is" for testing and evaluation purposes. Features may change without notice.</p>
+      <p style="margin-top:12px"><strong>No Live Bank Connectivity:</strong> The current Beta uses demonstration data only. No real financial transactions are processed. Live bank connectivity is planned for v1.1 via Stitch Money API.</p>
+      <p style="margin-top:12px"><strong>Authorised Use:</strong> OneBank SA is intended for use by authorised business users only. You must not share credentials or attempt to access accounts you are not authorised to use.</p>
+      <p style="margin-top:12px"><strong>Data Accuracy:</strong> While we take all reasonable steps to ensure data accuracy, OneBank SA is not liable for decisions made based on information presented in the Beta platform.</p>
+      <p style="margin-top:12px"><strong>Intellectual Property:</strong> All platform content, design, and code is the intellectual property of OneBank South Africa.</p>
+      <p style="margin-top:12px"><strong>Governing Law:</strong> These terms are governed by the laws of the Republic of South Africa.</p>
+      <p style="margin-top:12px;font-style:italic;color:#718096">Full Terms of Service will be published with the v1.1 launch. For queries: bongimsk80@gmail.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">OB</div>
+          <span class="logo-text">One<span>Bank</span> SA</span>
+        </div>
+        <p class="footer-desc">South Africa's B2B Treasury Management Platform. Aggregate your FNB, Standard Bank, Absa, Nedbank, and Capitec accounts into one secure, cloud-native console.</p>
+        <div class="footer-socials">
+          <a class="social-btn" href="https://www.linkedin.com/in/bonginkosi-masuku-mba-6802315a" target="_blank" title="LinkedIn" style="text-decoration:none;color:white">in</a>
+          <a class="social-btn" href="mailto:bongimsk80@gmail.com" title="Email" style="text-decoration:none;color:white">✉</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('features')">Features</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('security')">Security &amp; Compliance</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('pricing')">Pricing</a>
+        <a class="footer-link" href="https://onebank-sa-iota.vercel.app" target="_blank">Live Platform →</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('about')">About Us</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('about')">Meet the Founder</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('features')">Product Roadmap</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('contact')">Book a Demo</a>
+        <a class="footer-link" href="mailto:bongimsk80@gmail.com">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h5>Compliance</h5>
+        <a class="footer-link" href="javascript:void(0)" onclick="showModal('popia')">POPIA Policy</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showModal('privacy')">Privacy Notice</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showModal('terms')">Terms of Service</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('security')">Security Docs</a>
+        <a class="footer-link" href="mailto:bongimsk80@gmail.com">Report a Concern</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 OneBank South Africa. All rights reserved. Beta v1.0.0</div>
+      <div class="footer-legal">
+        <a onclick="showModal('privacy')" style="cursor:pointer">Privacy Policy</a>
+        <a onclick="showModal('terms')" style="cursor:pointer">Terms of Service</a>
+        <a onclick="showModal('popia')" style="cursor:pointer">POPIA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // Show target
+    const target = document.getElementById('page-' + pageId);
+    if (target) target.classList.add('active');
+    // Update nav active states
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + pageId);
+    if (navEl) navEl.classList.add('active');
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showModal(type) {
+    // Hide all modals first
+    document.querySelectorAll('.compliance-modal').forEach(m => m.style.display = 'none');
+    const modal = document.getElementById('modal-' + type);
+    if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeModal() {
+    document.querySelectorAll('.compliance-modal').forEach(m => m.style.display = 'none');
+    document.body.style.overflow = '';
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwVMKPm3r5cV4-wiLiRD-_BN-aYg8mOC9zxV4AjljVI6SC8SFWYUI0c6m1DMN2V0u3Z/exec';
+
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+
+    // Collect form data
+    const payload = {
+      firstName : document.getElementById('firstName').value.trim(),
+      lastName  : document.getElementById('lastName').value.trim(),
+      email     : document.getElementById('email').value.trim(),
+      phone     : document.getElementById('phone').value.trim(),
+      company   : document.getElementById('company').value.trim(),
+      role      : document.getElementById('role').value,
+      banks     : document.getElementById('banks').value,
+      message   : document.getElementById('message').value.trim()
+    };
+
+    // Loading state
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    btn.style.opacity = '0.8';
+
+    try {
+      await fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',          // Apps Script requires no-cors
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      // Success — no-cors always resolves, so we treat any response as success
+      btn.textContent = '✓ Booking received — we\'ll be in touch!';
+      btn.style.background = '#27AE60';
+      btn.style.opacity = '1';
+      document.getElementById('demoForm').reset();
+
+      // Reset button after 5 seconds
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 5000);
+
+    } catch (err) {
+      btn.textContent = '✗ Something went wrong — please try again';
+      btn.style.background = '#C0392B';
+      btn.style.opacity = '1';
+      btn.disabled = false;
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        btn.style.background = '';
+      }, 4000);
+    }
+  }
+
+</script>
+
+<!-- WhatsApp Floating Action Button -->
+<a class="whatsapp-fab" href="https://wa.me/27718751905?text=Hi%20Bonginkosi%2C%20I%27d%20like%20to%20learn%20more%20about%20OneBank%20SA." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<span class="whatsapp-tooltip">Chat on WhatsApp</span>
+
+</body>
+</html>
