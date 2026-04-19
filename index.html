@@ -1195,6 +1195,29 @@
       color: var(--dark);
       line-height: 1.7;
     }
+    .modal-body h4 {
+      font-size: 13px; font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-top: 20px; margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-body h4:first-child { margin-top: 0; }
+    .modal-body ul {
+      margin: 8px 0 8px 18px;
+      list-style: disc;
+    }
+    .modal-body ul li { margin-bottom: 4px; }
+    .modal-body .modal-meta {
+      background: var(--primary-light);
+      border: 1px solid rgba(27,67,50,0.15);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .modal-body .modal-meta strong { color: var(--primary); }
 
     /* =====================  SOCIAL PROOF  ===================== */
     .traction-grid {
@@ -1851,14 +1874,14 @@
         <p class="section-sub">A cloud-native, full-stack Next.js application with enterprise-grade tooling — deployed on Vercel with Neon PostgreSQL.</p>
       </div>
       <div class="tech-grid">
-        <div class="tech-card"><div class="tech-icon">⚡</div><h4>Next.js 16</h4><p>React framework with App Router &amp; Turbopack</p></div>
-        <div class="tech-card"><div class="tech-icon">🔷</div><h4>TypeScript</h4><p>Strict mode — type safety across entire codebase</p></div>
-        <div class="tech-card"><div class="tech-icon">🎨</div><h4>Tailwind CSS v4</h4><p>Utility-first responsive styling</p></div>
-        <div class="tech-card"><div class="tech-icon">🗄️</div><h4>Neon PostgreSQL</h4><p>Serverless PostgreSQL database (eu-west-2)</p></div>
-        <div class="tech-card"><div class="tech-icon">🔐</div><h4>NextAuth.js v5</h4><p>JWT session management &amp; credential validation</p></div>
-        <div class="tech-card"><div class="tech-icon">🏗️</div><h4>Prisma ORM</h4><p>Type-safe database access &amp; migrations</p></div>
-        <div class="tech-card"><div class="tech-icon">🚀</div><h4>Vercel</h4><p>CI/CD, serverless functions, global CDN</p></div>
-        <div class="tech-card"><div class="tech-icon">📊</div><h4>Recharts</h4><p>Analytics charts — pie, bar, line visualisations</p></div>
+        <div class="tech-card"><div class="tech-icon">⚡</div><h4>Modern Web Framework</h4><p>Cloud-native full-stack app with server-side rendering</p></div>
+        <div class="tech-card"><div class="tech-icon">🔷</div><h4>Type-Safe Codebase</h4><p>Strict type checking — fewer bugs, faster delivery</p></div>
+        <div class="tech-card"><div class="tech-icon">🗄️</div><h4>Serverless Database</h4><p>Managed PostgreSQL — auto-scaling, EU-hosted</p></div>
+        <div class="tech-card"><div class="tech-icon">🔐</div><h4>Enterprise Auth</h4><p>JWT sessions, bcrypt hashing, automatic token invalidation</p></div>
+        <div class="tech-card"><div class="tech-icon">🛡️</div><h4>AES-256 Encryption</h4><p>All sensitive data encrypted at rest and in transit (TLS 1.2+)</p></div>
+        <div class="tech-card"><div class="tech-icon">📊</div><h4>Real-Time Analytics</h4><p>Interactive charts — daily trends, bank breakdowns, hourly heatmaps</p></div>
+        <div class="tech-card"><div class="tech-icon">🚀</div><h4>Global CDN Deployment</h4><p>Vercel edge network — fast load times across South Africa</p></div>
+        <div class="tech-card"><div class="tech-icon">🔄</div><h4>ERP Integrations</h4><p>Sage, SAP, Oracle, Dynamics, Xero, QuickBooks — API-connected</p></div>
       </div>
     </div>
   </section>
@@ -2470,19 +2493,69 @@
 <div id="modal-popia" class="compliance-modal" style="display:none">
   <div class="modal-inner">
     <div class="modal-header">
-      <h3>POPIA Policy</h3>
+      <h3>POPIA Compliance Notice</h3>
       <button onclick="closeModal()" class="modal-close">✕</button>
     </div>
     <div class="modal-body">
-      <p><strong>Protection of Personal Information Act (POPIA) — OneBank SA</strong></p>
-      <p style="margin-top:12px">OneBank SA processes personal and financial data in accordance with South Africa's Protection of Personal Information Act, Act 4 of 2013 (POPIA).</p>
-      <p style="margin-top:12px"><strong>Data We Process:</strong> Name, email address, role, bank account information, transaction data, and audit logs.</p>
-      <p style="margin-top:12px"><strong>Lawful Basis:</strong> Legitimate business interest for treasury management purposes.</p>
-      <p style="margin-top:12px"><strong>Purpose Limitation:</strong> Data is collected solely for the purpose of treasury management and is not shared with third parties for marketing purposes.</p>
-      <p style="margin-top:12px"><strong>Data Subject Rights:</strong> You have the right to access, correct, and request deletion of your personal information. Contact bongimsk80@gmail.com to exercise these rights.</p>
-      <p style="margin-top:12px"><strong>Security Safeguards:</strong> All data is encrypted in transit (TLS/HTTPS) and at rest. Passwords are bcrypt-hashed with cost factor 12. A complete audit trail is maintained.</p>
-      <p style="margin-top:12px"><strong>Data Residency:</strong> Currently hosted on Neon PostgreSQL (eu-west-2, AWS Ireland). SA-region hosting is planned for v2.0.</p>
-      <p style="margin-top:12px;font-style:italic;color:#718096">This policy will be updated with a full formal Privacy Notice before the v1.1 launch. For queries: bongimsk80@gmail.com</p>
+      <div class="modal-meta">
+        <strong>Effective date:</strong> 18 April 2026 &nbsp;·&nbsp; <strong>Information Officer:</strong> bongimsk80@gmail.com &nbsp;·&nbsp; <strong>IO Registration:</strong> Pending — Information Regulator (South Africa)
+      </div>
+      <p>OneBank South Africa is committed to protecting your personal information in accordance with the <strong>Protection of Personal Information Act, 2013 (POPIA)</strong> and the <strong>Electronic Communications and Transactions Act, 2002 (ECTA)</strong>.</p>
+
+      <h4>1. Responsible Party</h4>
+      <p>OneBank South Africa (Pty) Ltd is the responsible party as defined under POPIA. We determine the purpose and means of processing your personal information. Contact: bongimsk80@gmail.com</p>
+
+      <h4>2. Personal Information We Collect</h4>
+      <ul>
+        <li><strong>Account Information:</strong> Full name, work email address, organisation name, role.</li>
+        <li><strong>Authentication Data:</strong> Hashed passwords, verification tokens (never stored in plain text), session tokens.</li>
+        <li><strong>Financial Operations Data:</strong> Payment instructions, bank account numbers, beneficiary details, transaction references.</li>
+        <li><strong>Usage &amp; Audit Data:</strong> IP addresses, login timestamps, actions performed within the platform (audit trail).</li>
+        <li><strong>Communications:</strong> Feedback submitted through the platform, support enquiries.</li>
+      </ul>
+
+      <h4>3. Lawful Basis for Processing</h4>
+      <ul>
+        <li><strong>Contract:</strong> Processing necessary to provide the Service you registered for.</li>
+        <li><strong>Legal obligation:</strong> Compliance with FICA, POCA, and other applicable South African law.</li>
+        <li><strong>Legitimate interest:</strong> Fraud prevention, security monitoring, and platform improvement.</li>
+        <li><strong>Consent:</strong> Marketing communications (opt-in only; you may withdraw at any time).</li>
+      </ul>
+
+      <h4>4. Your Rights Under POPIA</h4>
+      <p>As a data subject under POPIA, you have the right to:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal information we hold about you.</li>
+        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information.</li>
+        <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal obligations).</li>
+        <li><strong>Objection:</strong> Object to processing based on legitimate interest.</li>
+        <li><strong>Withdrawal of consent:</strong> Withdraw consent for marketing at any time.</li>
+        <li><strong>Complaint:</strong> Lodge a complaint with the Information Regulator at <strong>www.justice.gov.za/inforeg</strong>.</li>
+      </ul>
+      <p>To exercise your rights: <strong>bongimsk80@gmail.com</strong></p>
+
+      <h4>5. Security Safeguards</h4>
+      <ul>
+        <li>Passwords hashed with bcrypt (cost factor 12) — never stored in plain text.</li>
+        <li>ERP API keys encrypted at rest with AES-256.</li>
+        <li>All data in transit protected by TLS 1.2+.</li>
+        <li>JWT sessions with automatic invalidation on password reset.</li>
+        <li>Per-IP rate limiting on all authentication endpoints.</li>
+        <li>Role-based access control (RBAC) with per-request authorisation checks.</li>
+      </ul>
+
+      <h4>6. Data Retention</h4>
+      <p>Financial audit logs are retained for a minimum of <strong>5 years</strong> in compliance with the Companies Act, 2008. You may request deletion of your account (subject to legal retention obligations) by contacting us.</p>
+
+      <h4>7. Sub-Processors</h4>
+      <ul>
+        <li><strong>Neon</strong> (EU) — encrypted PostgreSQL database, GDPR-compliant, covered by POPIA operator agreement.</li>
+        <li><strong>Resend</strong> (US) — transactional email delivery.</li>
+        <li><strong>Vercel</strong> (EU/US) — application infrastructure.</li>
+      </ul>
+
+      <h4>8. Cross-Border Transfers</h4>
+      <p>Data may be processed outside South Africa by our sub-processors. We ensure adequate safeguards consistent with <strong>POPIA section 72</strong> requirements.</p>
     </div>
   </div>
 </div>
@@ -2490,19 +2563,86 @@
 <div id="modal-privacy" class="compliance-modal" style="display:none">
   <div class="modal-inner">
     <div class="modal-header">
-      <h3>Privacy Notice</h3>
+      <h3>Privacy Policy</h3>
       <button onclick="closeModal()" class="modal-close">✕</button>
     </div>
     <div class="modal-body">
-      <p><strong>OneBank SA Privacy Notice — Beta v1.0.0</strong></p>
-      <p style="margin-top:12px">This privacy notice describes how OneBank South Africa collects, uses, and protects your personal information.</p>
-      <p style="margin-top:12px"><strong>Who We Are:</strong> OneBank SA is a B2B treasury management platform operated in South Africa.</p>
-      <p style="margin-top:12px"><strong>What We Collect:</strong> Account credentials, bank account details, payment data, transaction history, and usage logs.</p>
-      <p style="margin-top:12px"><strong>How We Use It:</strong> To provide treasury management services, enforce approval workflows, and generate financial reports.</p>
-      <p style="margin-top:12px"><strong>Who We Share It With:</strong> We do not sell or share personal data with third parties. Infrastructure providers (Vercel, Neon) process data under data processing agreements.</p>
-      <p style="margin-top:12px"><strong>How Long We Keep It:</strong> User data is retained for the duration of the business relationship. Audit logs are retained for compliance purposes.</p>
-      <p style="margin-top:12px"><strong>Your Rights:</strong> Access, rectification, deletion, and portability of your data. Contact bongimsk80@gmail.com.</p>
-      <p style="margin-top:12px;font-style:italic;color:#718096">A full formal Privacy Policy will be published with v1.1. Beta v1.0.0 — April 2026</p>
+      <div class="modal-meta">
+        <strong>Effective date:</strong> 18 April 2026 &nbsp;·&nbsp; <strong>Contact:</strong> bongimsk80@gmail.com
+      </div>
+      <p>OneBank South Africa (Pty) Ltd ("OneBank", "we", "us") is committed to protecting your personal information in accordance with POPIA and ECTA.</p>
+
+      <h4>1. Who We Are (Responsible Party)</h4>
+      <p>OneBank South Africa (Pty) Ltd is the responsible party as defined under POPIA. We determine the purpose and means of processing your personal information. Information Officer: bongimsk80@gmail.com</p>
+
+      <h4>2. Personal Information We Collect</h4>
+      <ul>
+        <li><strong>Account Information:</strong> Full name, work email address, organisation name, role within your organisation.</li>
+        <li><strong>Authentication Data:</strong> Hashed passwords, verification tokens (never stored in plain text), session tokens.</li>
+        <li><strong>Financial Operations Data:</strong> Payment instructions you initiate or approve, bank account numbers, beneficiary details, transaction references.</li>
+        <li><strong>Usage &amp; Audit Data:</strong> IP addresses, login timestamps, actions performed within the platform (for audit trail purposes).</li>
+        <li><strong>Communications:</strong> Feedback submitted through the platform, support enquiries.</li>
+      </ul>
+
+      <h4>3. Lawful Basis for Processing</h4>
+      <ul>
+        <li><strong>Contract:</strong> Processing necessary to provide the Service you registered for.</li>
+        <li><strong>Legal obligation:</strong> Compliance with FICA, POCA, and applicable South African law.</li>
+        <li><strong>Legitimate interest:</strong> Fraud prevention, security monitoring, and platform improvement.</li>
+        <li><strong>Consent:</strong> Marketing communications (opt-in only; withdraw at any time).</li>
+      </ul>
+
+      <h4>4. How We Use Your Information</h4>
+      <ul>
+        <li>To create and manage your account and organisation on the platform.</li>
+        <li>To provide treasury management features (payment initiation, approvals, analytics).</li>
+        <li>To send transactional emails (verification, password reset, team invitations).</li>
+        <li>To maintain an audit trail for financial compliance purposes.</li>
+        <li>To detect, investigate, and prevent fraud and security incidents.</li>
+        <li>To improve the platform through aggregated, anonymised usage analytics.</li>
+      </ul>
+
+      <h4>5. Data Sharing &amp; Third Parties</h4>
+      <p>We do not sell your personal information. We share data only with:</p>
+      <ul>
+        <li><strong>Neon (EU):</strong> Encrypted PostgreSQL cloud database (GDPR-compliant; covered by POPIA operator agreement).</li>
+        <li><strong>Resend (US):</strong> Transactional email delivery. We share only the recipient address and email content.</li>
+        <li><strong>Vercel (EU/US):</strong> Application infrastructure. Processes request/response data in transit.</li>
+        <li><strong>Law enforcement:</strong> Where required by South African law or court order.</li>
+      </ul>
+
+      <h4>6. Data Security</h4>
+      <ul>
+        <li>Passwords hashed with bcrypt (cost factor 12) — never stored in plain text.</li>
+        <li>ERP API keys encrypted at rest with AES-256.</li>
+        <li>All data in transit protected by TLS 1.2+.</li>
+        <li>JWT sessions with automatic invalidation on password reset.</li>
+        <li>Per-IP rate limiting on all authentication endpoints.</li>
+        <li>Role-based access control (RBAC) with per-request authorisation checks.</li>
+      </ul>
+
+      <h4>7. Data Retention</h4>
+      <p>We retain your personal information for as long as your account is active or as required by law. Financial audit logs are retained for a minimum of <strong>5 years</strong> in compliance with the Companies Act, 2008.</p>
+
+      <h4>8. Your Rights Under POPIA</h4>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal information we hold about you.</li>
+        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information.</li>
+        <li><strong>Deletion:</strong> Request deletion (subject to legal obligations).</li>
+        <li><strong>Objection:</strong> Object to processing based on legitimate interest.</li>
+        <li><strong>Withdrawal of consent:</strong> Withdraw consent for marketing at any time.</li>
+        <li><strong>Complaint:</strong> Lodge a complaint with the Information Regulator at <strong>www.justice.gov.za/inforeg</strong>.</li>
+      </ul>
+      <p>To exercise your rights: <strong>bongimsk80@gmail.com</strong></p>
+
+      <h4>9. Cookies &amp; Tracking</h4>
+      <p>We use only essential session cookies required for authentication (NextAuth.js session token). We do not use third-party analytics, advertising, or tracking cookies.</p>
+
+      <h4>10. Cross-Border Data Transfers</h4>
+      <p>Your data may be processed outside South Africa by our sub-processors (Neon EU, Vercel EU/US, Resend US). We ensure adequate safeguards consistent with <strong>POPIA section 72</strong> requirements.</p>
+
+      <h4>11. Changes to This Policy</h4>
+      <p>We will notify you of material changes by email at least 14 days before they take effect.</p>
     </div>
   </div>
 </div>
@@ -2514,14 +2654,60 @@
       <button onclick="closeModal()" class="modal-close">✕</button>
     </div>
     <div class="modal-body">
-      <p><strong>OneBank SA Terms of Service — Beta v1.0.0</strong></p>
-      <p style="margin-top:12px"><strong>Beta Usage:</strong> OneBank SA is currently in Beta. The platform is provided "as is" for testing and evaluation purposes. Features may change without notice.</p>
-      <p style="margin-top:12px"><strong>No Live Bank Connectivity:</strong> The current Beta uses demonstration data only. No real financial transactions are processed. Live bank connectivity is planned for v1.1 via Stitch Money API.</p>
-      <p style="margin-top:12px"><strong>Authorised Use:</strong> OneBank SA is intended for use by authorised business users only. You must not share credentials or attempt to access accounts you are not authorised to use.</p>
-      <p style="margin-top:12px"><strong>Data Accuracy:</strong> While we take all reasonable steps to ensure data accuracy, OneBank SA is not liable for decisions made based on information presented in the Beta platform.</p>
-      <p style="margin-top:12px"><strong>Intellectual Property:</strong> All platform content, design, and code is the intellectual property of OneBank South Africa.</p>
-      <p style="margin-top:12px"><strong>Governing Law:</strong> These terms are governed by the laws of the Republic of South Africa.</p>
-      <p style="margin-top:12px;font-style:italic;color:#718096">Full Terms of Service will be published with the v1.1 launch. For queries: bongimsk80@gmail.com</p>
+      <div class="modal-meta">
+        <strong>Effective date:</strong> 18 April 2026 &nbsp;·&nbsp; <strong>Queries:</strong> bongimsk80@gmail.com
+      </div>
+
+      <h4>1. Acceptance of Terms</h4>
+      <p>By accessing or using the OneBank South Africa platform ("Service"), you agree to be bound by these Terms of Service. These Terms constitute a legally binding agreement between you ("User") and OneBank South Africa (Pty) Ltd ("OneBank", "we", "us").</p>
+
+      <h4>2. Beta Service Disclaimer</h4>
+      <p>The Service is currently provided in <strong>beta</strong>. During the beta period:</p>
+      <ul>
+        <li>Payment initiation is in <strong>simulation mode</strong> — no actual funds are transferred.</li>
+        <li>Features, data, and availability may change without notice.</li>
+        <li>We make no warranties regarding uptime, data retention, or fitness for purpose.</li>
+        <li>Beta access is provided free of charge at our discretion and may be withdrawn at any time.</li>
+      </ul>
+
+      <h4>3. Eligibility &amp; Account Registration</h4>
+      <p>The Service is intended for registered South African business entities. By registering, you warrant that:</p>
+      <ul>
+        <li>You are authorised to bind your organisation to these Terms.</li>
+        <li>All information provided during registration is accurate and complete.</li>
+        <li>You will maintain the confidentiality of your login credentials.</li>
+        <li>You will immediately notify us of any unauthorised access at bongimsk80@gmail.com.</li>
+      </ul>
+
+      <h4>4. Permitted Use</h4>
+      <p>You may use the Service solely for lawful treasury management purposes within South Africa. You must not:</p>
+      <ul>
+        <li>Use the Service for money laundering, fraud, or any activity that violates FICA or POCA.</li>
+        <li>Attempt to gain unauthorised access to other organisations' data.</li>
+        <li>Reverse-engineer, decompile, or scrape the Service.</li>
+        <li>Transmit malicious code or interfere with Service integrity.</li>
+      </ul>
+
+      <h4>5. Data &amp; Privacy</h4>
+      <p>Your use of the Service is governed by our Privacy Policy, incorporated into these Terms by reference. We process personal information in accordance with POPIA, 2013.</p>
+
+      <h4>6. Intellectual Property</h4>
+      <p>All content, branding, software, and intellectual property on the Service is owned by OneBank South Africa (Pty) Ltd. Nothing in these Terms grants you any ownership rights. You may not use our trademarks without prior written consent.</p>
+
+      <h4>7. Limitation of Liability</h4>
+      <p>To the maximum extent permitted by South African law, OneBank shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including lost profits, arising from your use of the Service. Our total liability shall not exceed the amount paid to us in the 12 months preceding the claim. This limitation does not apply to fraud or wilful misconduct by OneBank.</p>
+
+      <h4>8. Indemnification</h4>
+      <p>You agree to indemnify and hold harmless OneBank, its directors, employees, and agents from any claims, damages, or expenses arising out of your use of the Service or your violation of these Terms.</p>
+
+      <h4>9. Termination</h4>
+      <p>We may suspend or terminate your access at any time for breach of these Terms, or for any reason during the beta period. You may terminate your account by contacting bongimsk80@gmail.com. Upon termination, your right to use the Service ceases immediately.</p>
+
+      <h4>10. Governing Law &amp; Dispute Resolution</h4>
+      <p>These Terms are governed by the laws of the Republic of South Africa. Any disputes shall be resolved in the courts of <strong>Johannesburg, Gauteng</strong>. You waive any objection to jurisdiction or venue in those courts.</p>
+
+      <h4>11. Changes to Terms</h4>
+      <p>Material changes will be communicated by email or prominent notice on the Service. Continued use after the effective date constitutes acceptance of the revised Terms.</p>
     </div>
   </div>
 </div>
