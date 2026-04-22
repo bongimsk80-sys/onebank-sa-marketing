@@ -34,14 +34,27 @@
         "name": "Beta",
         "price": "0",
         "priceCurrency": "ZAR",
-        "description": "Free beta access — full platform features included"
+        "description": "Founding member access — invite only, up to 10 bank accounts"
+      },
+      {
+        "@type": "Offer",
+        "name": "Starter",
+        "price": "799",
+        "priceCurrency": "ZAR",
+        "description": "Entry-level paid plan — up to 5 bank accounts, per organisation per month"
       },
       {
         "@type": "Offer",
         "name": "Growth",
         "price": "2499",
         "priceCurrency": "ZAR",
-        "description": "Per organisation per month"
+        "description": "Mid-market plan — up to 25 bank accounts, per organisation per month"
+      },
+      {
+        "@type": "Offer",
+        "name": "Enterprise",
+        "priceCurrency": "ZAR",
+        "description": "Custom pricing — unlimited bank accounts, dedicated SLA, white-label option"
       }
     ],
     "author": {
@@ -628,8 +641,8 @@
     /* =====================  PRICING  ===================== */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
       align-items: start;
     }
     .price-card {
@@ -945,7 +958,7 @@
       /* Grids */
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .security-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; margin: 0 auto; }
       .price-card.featured { transform: none; }
       .roadmap-grid { grid-template-columns: 1fr; }
       .tech-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1006,10 +1019,9 @@
       /* Grids — all single column on mobile */
       .features-grid,
       .security-grid,
-      .pricing-grid,
       .roadmap-grid,
       .tech-grid { grid-template-columns: 1fr; }
-      .pricing-grid { max-width: 100%; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
       .steps-grid { grid-template-columns: 1fr; gap: 20px; }
       .footer-grid { grid-template-columns: 1fr; gap: 28px; }
       .form-row { grid-template-columns: 1fr; }
@@ -2317,33 +2329,53 @@
       <div class="section-header text-center">
         <div class="section-tag">Pricing Tiers</div>
         <h2 class="section-heading">Choose Your <span>Plan</span></h2>
-        <p class="section-sub">All plans include full platform access. Pricing scales with users, connected banks, and transaction volume.</p>
+        <p class="section-sub">Four plans. One platform. Start free as a founding Beta member, or go straight to Starter from R799/month. No hidden fees, no long-term lock-in.</p>
       </div>
       <div class="pricing-grid">
-        <!-- Beta -->
+
+        <!-- Beta (Founding Member) -->
         <div class="price-card">
-          <div class="price-tier">Beta</div>
+          <div class="price-badge" style="background:var(--primary)">Founding Members</div>
+          <div class="price-tier" style="margin-top:14px">Beta</div>
           <div class="price-amount">R0</div>
-          <div class="price-period">/ month — Free during Beta</div>
+          <div class="price-period">/ month — invite only</div>
           <div class="price-features">
-            <div class="price-feat"><span class="price-check">✓</span> All platform features included</div>
+            <div class="price-feat"><span class="price-check">✓</span> Full platform access</div>
             <div class="price-feat"><span class="price-check">✓</span> Up to 10 connected bank accounts</div>
             <div class="price-feat"><span class="price-check">✓</span> 6 role-based access levels</div>
             <div class="price-feat"><span class="price-check">✓</span> Multi-step approval workflows</div>
             <div class="price-feat"><span class="price-check">✓</span> PDF &amp; Excel reporting</div>
             <div class="price-feat"><span class="price-check">✓</span> Full audit trail</div>
-            <div class="price-feat"><span class="price-check">✓</span> ERP integrations (Sage, SAP &amp; more)</div>
+            <div class="price-feat"><span class="price-check">✓</span> ERP integrations (Sage, SAP)</div>
           </div>
-          <button class="btn btn-outline" style="width:100%" onclick="showPage('contact')">Get Started Free</button>
+          <a class="btn btn-outline" style="width:100%;display:block;text-align:center;box-sizing:border-box" href="https://onebank-sa-iota.vercel.app/register" target="_blank">Join Beta</a>
         </div>
+
+        <!-- Starter -->
+        <div class="price-card">
+          <div class="price-tier">Starter</div>
+          <div class="price-amount">R799</div>
+          <div class="price-period">/ organisation / month</div>
+          <div class="price-features">
+            <div class="price-feat"><span class="price-check">✓</span> All core platform features</div>
+            <div class="price-feat"><span class="price-check">✓</span> Up to 5 connected bank accounts</div>
+            <div class="price-feat"><span class="price-check">✓</span> 6 role-based access levels</div>
+            <div class="price-feat"><span class="price-check">✓</span> Multi-step approval workflows</div>
+            <div class="price-feat"><span class="price-check">✓</span> PDF &amp; Excel reporting</div>
+            <div class="price-feat"><span class="price-check">✓</span> Full audit trail</div>
+            <div class="price-feat"><span class="price-check">✓</span> Email support</div>
+          </div>
+          <a class="btn btn-primary" style="width:100%;display:block;text-align:center;box-sizing:border-box" href="https://onebank-sa-iota.vercel.app/register" target="_blank">Get Started</a>
+        </div>
+
         <!-- Growth (featured) -->
         <div class="price-card featured">
           <div class="price-badge">Most Popular</div>
-          <div class="price-tier">Growth</div>
+          <div class="price-tier" style="margin-top:14px">Growth</div>
           <div class="price-amount">R2,499</div>
           <div class="price-period">/ organisation / month</div>
           <div class="price-features">
-            <div class="price-feat"><span class="price-check">✓</span> Everything in Beta</div>
+            <div class="price-feat"><span class="price-check">✓</span> Everything in Starter</div>
             <div class="price-feat"><span class="price-check">✓</span> Up to 25 connected bank accounts</div>
             <div class="price-feat"><span class="price-check">✓</span> Live SA bank data (Stitch)</div>
             <div class="price-feat"><span class="price-check">✓</span> Two-factor authentication</div>
@@ -2351,8 +2383,9 @@
             <div class="price-feat"><span class="price-check">✓</span> Advanced analytics &amp; forecasting</div>
             <div class="price-feat"><span class="price-check">✓</span> Priority support</div>
           </div>
-          <button class="btn btn-white" style="width:100%" onclick="showPage('contact')">Get Started</button>
+          <button class="btn btn-white" style="width:100%" onclick="showPage('contact')">Book a Demo</button>
         </div>
+
         <!-- Enterprise -->
         <div class="price-card">
           <div class="price-tier">Enterprise</div>
@@ -2369,6 +2402,7 @@
           </div>
           <button class="btn btn-primary" style="width:100%" onclick="showPage('contact')">Contact Sales</button>
         </div>
+
       </div>
 
       <!-- Revenue streams -->
