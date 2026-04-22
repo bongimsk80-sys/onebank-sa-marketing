@@ -468,8 +468,11 @@
       opacity: 0;
       transition: opacity var(--transition);
     }
-    .feature-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); border-color: transparent; }
+    /* Standalone feature-card hover (when NOT inside a hovered grid — e.g. single cards) */
+    .feature-card:hover { box-shadow: var(--shadow); transform: translateY(-8px) scale(1.02); border-color: transparent; }
     .feature-card:hover::before { opacity: 1; }
+    /* When inside a hovered grid, the sibling-dim rules take over and show the gold accent line */
+    .features-grid:hover .feature-card:hover::before { opacity: 1; }
     .feature-icon {
       width: 52px; height: 52px;
       border-radius: 14px;
@@ -686,6 +689,68 @@
     .price-card.featured .price-check { color: var(--yellow); }
     .btn-white { background: white; color: var(--primary); font-weight: 700; }
     .btn-white:hover { background: var(--light-bg); }
+
+    /* =====================  CARD LIFT + SIBLING DIM  =====================
+       When the mouse is anywhere inside a card grid, all sibling cards step
+       back. The one card under the cursor lifts to the front.
+       ===================================================================== */
+
+    /* Ensure all cards can animate and stack */
+    .price-card, .feature-card, .security-card,
+    .tech-card, .traction-card, .roadmap-card {
+      transition: opacity 0.22s ease, transform 0.22s ease,
+                  box-shadow 0.22s ease, border-color 0.22s ease;
+      position: relative;
+    }
+
+    /* Step 1 — dim + shrink all cards when grid is hovered */
+    .pricing-grid:hover    .price-card,
+    .features-grid:hover   .feature-card,
+    .security-grid:hover   .security-card,
+    .tech-grid:hover       .tech-card,
+    .traction-grid:hover   .traction-card,
+    .roadmap-grid:hover    .roadmap-card {
+      opacity: 0.52;
+      transform: scale(0.97);
+    }
+
+    /* Featured pricing card starts at scale(1.04) — dim it but keep slightly larger */
+    .pricing-grid:hover .price-card.featured {
+      transform: scale(1.01);
+    }
+
+    /* Step 2 — the hovered card pops to the front */
+    .pricing-grid:hover    .price-card:hover,
+    .features-grid:hover   .feature-card:hover,
+    .tech-grid:hover       .tech-card:hover,
+    .traction-grid:hover   .traction-card:hover,
+    .roadmap-grid:hover    .roadmap-card:hover {
+      opacity: 1;
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 24px 52px rgba(27,67,50,0.14);
+      border-color: var(--primary);
+      z-index: 2;
+    }
+
+    /* Featured card lifts even higher (from scale 1.01 base) */
+    .pricing-grid:hover .price-card.featured:hover {
+      transform: translateY(-10px) scale(1.07);
+      box-shadow: 0 28px 56px rgba(27,67,50,0.45);
+      border-color: transparent;
+    }
+
+    /* Security cards are on a dark background — lighter glow instead of green border */
+    .security-grid:hover .security-card {
+      opacity: 0.45;
+      transform: scale(0.97);
+    }
+    .security-grid:hover .security-card:hover {
+      opacity: 1;
+      transform: translateY(-10px) scale(1.03);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.35);
+      box-shadow: 0 24px 52px rgba(0,0,0,0.35);
+    }
 
     /* =====================  ROADMAP  ===================== */
     .roadmap-grid {
