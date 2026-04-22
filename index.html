@@ -1441,6 +1441,75 @@
     .credential-list li::before { content:"✓"; color:var(--primary); font-weight:800; flex-shrink:0; }
 
     /* ============================================================
+       ADVISORY BOARD
+       ============================================================ */
+    .advisor-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .advisor-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    .advisor-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .advisor-card.cto::before { background: linear-gradient(90deg, var(--primary), #6EE7B7); }
+    .advisor-card.cfo::before { background: linear-gradient(90deg, var(--accent), var(--orange)); }
+    .advisor-avatar-wrap {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .advisor-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 800; color: white; flex-shrink: 0;
+    }
+    .advisor-card.cto .advisor-avatar { background: var(--primary); }
+    .advisor-card.cfo .advisor-avatar { background: var(--accent); color: var(--navy); }
+    .advisor-role-tag {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--medium); margin-bottom: 4px;
+    }
+    .advisor-name {
+      font-size: 18px; font-weight: 800; color: var(--navy); line-height: 1.2;
+    }
+    .advisor-pending {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600;
+      background: rgba(212,160,23,0.12); color: #7a5c00;
+      border: 1px solid rgba(212,160,23,0.35);
+      border-radius: 20px; padding: 4px 12px;
+      width: fit-content;
+    }
+    .advisor-expertise {
+      font-size: 13px; font-weight: 700; color: var(--navy);
+      margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .advisor-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .advisor-tag {
+      font-size: 12px; background: var(--light-bg);
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 4px 12px; color: var(--medium); font-weight: 500;
+    }
+    /* hover lift for advisor grid */
+    .advisor-grid:hover .advisor-card { opacity: 0.52; transform: scale(0.97); }
+    .advisor-grid:hover .advisor-card:hover { opacity: 1; transform: translateY(-10px) scale(1.02); box-shadow: 0 24px 52px rgba(27,67,50,0.13); border-color: var(--primary); z-index: 2; }
+    @media (max-width: 640px) { .advisor-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
        NEW RESPONSIVE OVERRIDES
        ============================================================ */
     @media (max-width: 960px) {
@@ -2126,8 +2195,86 @@
     </div>
   </section>
 
-  <!-- DEVELOPMENT PHASES -->
+  <!-- ADVISORY BOARD -->
   <section style="background:var(--light-bg)">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Advisory Board</div>
+        <h2 class="section-heading">Guided by <span>Domain Experts</span></h2>
+        <p class="section-sub">OneBank SA is building an advisory board of seasoned practitioners across financial technology, corporate treasury, and enterprise risk — bringing decades of real-world CFO and CTO experience into the platform's direction.</p>
+      </div>
+
+      <div class="advisor-grid">
+
+        <!-- CTO Advisor -->
+        <div class="advisor-card cto">
+          <div class="advisor-avatar-wrap">
+            <div class="advisor-avatar cto">CTO</div>
+            <div>
+              <div class="advisor-role-tag">Technology Advisor</div>
+              <div class="advisor-name">Chief Technology Officer</div>
+              <div class="advisor-pending">⏳ Being announced Q3 2026</div>
+            </div>
+          </div>
+          <div>
+            <div class="advisor-expertise">Profile</div>
+            <p style="font-size:14px;color:var(--medium);line-height:1.7;margin:0 0 16px">
+              We are seeking a CTO advisor with deep experience in cloud-native financial infrastructure, API security, and scaling B2B SaaS platforms in regulated environments. Ideally with SA FinTech or banking technology background.
+            </p>
+            <div class="advisor-expertise">Areas of Expertise</div>
+            <div class="advisor-tags">
+              <span class="advisor-tag">Cloud Architecture</span>
+              <span class="advisor-tag">API Security</span>
+              <span class="advisor-tag">FinTech Scaling</span>
+              <span class="advisor-tag">SA Banking Tech</span>
+              <span class="advisor-tag">Open Banking</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CFO Advisor -->
+        <div class="advisor-card cfo">
+          <div class="advisor-avatar-wrap">
+            <div class="advisor-avatar cfo">CFO</div>
+            <div>
+              <div class="advisor-role-tag">Finance Advisor</div>
+              <div class="advisor-name">Chief Financial Officer</div>
+              <div class="advisor-pending">⏳ Being announced Q3 2026</div>
+            </div>
+          </div>
+          <div>
+            <div class="advisor-expertise">Profile</div>
+            <p style="font-size:14px;color:var(--medium);line-height:1.7;margin:0 0 16px">
+              We are seeking a CFO advisor with hands-on corporate treasury management experience at mid-market or listed SA companies — someone who has lived the multi-bank fragmentation problem and can validate the product from the buyer's seat.
+            </p>
+            <div class="advisor-expertise">Areas of Expertise</div>
+            <div class="advisor-tags">
+              <span class="advisor-tag">Corporate Treasury</span>
+              <span class="advisor-tag">Multi-bank Operations</span>
+              <span class="advisor-tag">POPIA &amp; FICA</span>
+              <span class="advisor-tag">Financial Governance</span>
+              <span class="advisor-tag">SA Capital Markets</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Option B — open invitation -->
+      <div style="margin-top:40px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:32px;text-align:center;max-width:680px;margin-left:auto;margin-right:auto">
+        <div style="font-size:20px;margin-bottom:12px">🤝</div>
+        <h4 style="font-size:17px;font-weight:700;color:var(--navy);margin:0 0 10px">Interested in Advising OneBank SA?</h4>
+        <p style="font-size:14px;color:var(--medium);line-height:1.7;margin:0 0 20px">
+          We are looking for experienced operators in SA FinTech, corporate treasury, and enterprise risk who want to shape the platform that fixes fragmented banking for South African businesses. If that is you — or someone you know — we would like to talk.
+        </p>
+        <a href="mailto:bongimsk80@gmail.com?subject=Advisory%20Board%20—%20OneBank%20SA" class="btn btn-primary">Get in Touch →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DEVELOPMENT PHASES -->
+  <section style="background:var(--white)">
     <div class="container">
       <div class="section-header text-center">
         <div class="section-tag">Development History</div>
@@ -3078,6 +3225,31 @@
             <li>AI Business Strategy — Johns Hopkins University</li>
             <li>AI Generalist Fellow — OutSkill</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVISORY NOTE ON INVESTORS PAGE -->
+  <section>
+    <div class="container">
+      <div style="max-width:720px;margin:0 auto;text-align:center">
+        <div class="section-tag" style="display:inline-block;margin-bottom:20px">Advisory Board</div>
+        <h2 class="section-heading">Building the <span>Right Team Around the Table</span></h2>
+        <p class="section-sub" style="margin-bottom:32px">OneBank SA is assembling an advisory board of experienced SA FinTech and corporate treasury practitioners. CTO and CFO advisors are being confirmed for Q3 2026 announcement.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left">
+          <div style="background:var(--light-bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px">
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--medium);margin-bottom:8px">Technology Advisor</div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px">CTO — FinTech &amp; Cloud Infrastructure</div>
+            <div style="font-size:13px;color:var(--medium)">Cloud-native architecture · API security · SA banking tech · Open banking</div>
+            <div style="margin-top:14px;font-size:12px;font-weight:600;color:#7a5c00;background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.3);border-radius:20px;padding:4px 12px;display:inline-block">⏳ Announcing Q3 2026</div>
+          </div>
+          <div style="background:var(--light-bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px">
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--medium);margin-bottom:8px">Finance Advisor</div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px">CFO — Corporate Treasury &amp; Governance</div>
+            <div style="font-size:13px;color:var(--medium)">Multi-bank treasury · Financial governance · POPIA &amp; FICA · SA capital markets</div>
+            <div style="margin-top:14px;font-size:12px;font-weight:600;color:#7a5c00;background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.3);border-radius:20px;padding:4px 12px;display:inline-block">⏳ Announcing Q3 2026</div>
+          </div>
         </div>
       </div>
     </div>
