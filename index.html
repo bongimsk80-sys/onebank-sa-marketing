@@ -1378,6 +1378,85 @@
       .whatsapp-tooltip { display: none; }
     }
 
+    /* ============================================================
+       ROI SECTION
+       ============================================================ */
+    .roi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; }
+    .roi-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:32px; display:flex; flex-direction:column; gap:12px; }
+    .roi-card.roi-result { background:var(--primary); border-color:var(--primary); }
+    .roi-icon { font-size:40px; line-height:1; }
+    .roi-num { font-size:52px; font-weight:800; line-height:1; color:var(--primary); letter-spacing:-1px; }
+    .roi-card.roi-result .roi-num { color:var(--white); }
+    .roi-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--accent); }
+    .roi-card p { font-size:14px; color:var(--medium); line-height:1.65; margin:0; }
+    .roi-card.roi-result p { color:rgba(255,255,255,0.78); }
+
+    /* ============================================================
+       TESTIMONIALS
+       ============================================================ */
+    .testimonial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+    .testimonial-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:28px 32px; display:flex; flex-direction:column; gap:16px; transition:box-shadow 0.22s ease, transform 0.22s ease, opacity 0.22s ease; position:relative; }
+    .testimonial-stars { font-size:18px; color:#D4A017; letter-spacing:2px; }
+    .testimonial-text { font-style:italic; font-size:15px; line-height:1.7; color:var(--navy); flex:1; margin:0; }
+    .testimonial-author { display:flex; align-items:center; gap:14px; border-top:1px solid var(--border); padding-top:16px; }
+    .testimonial-avatar { width:44px; height:44px; border-radius:50%; background:var(--primary); color:var(--white); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .testimonial-name { font-size:14px; font-weight:700; color:var(--navy); line-height:1.3; }
+    .testimonial-role { font-size:12px; color:var(--medium); line-height:1.3; }
+    /* Testimonial sibling dim — same pattern as other card grids */
+    .testimonial-grid:hover .testimonial-card { opacity:0.52; transform:scale(0.97); }
+    .testimonial-grid:hover .testimonial-card:hover { opacity:1; transform:translateY(-10px) scale(1.03); box-shadow:0 24px 52px rgba(27,67,50,0.14); border-color:var(--primary); z-index:2; }
+
+    /* ============================================================
+       PRICING TOGGLE
+       ============================================================ */
+    .pricing-toggle { display:inline-flex; background:var(--light-bg); border-radius:30px; padding:4px; }
+    .toggle-btn { padding:10px 28px; border-radius:26px; font-size:14px; font-weight:600; cursor:pointer; border:none; background:transparent; color:var(--medium); transition:background 0.2s ease, color 0.2s ease; white-space:nowrap; font-family:inherit; }
+    .toggle-btn.active { background:var(--primary); color:var(--white); }
+
+    /* ============================================================
+       FAQ
+       ============================================================ */
+    .faq-grid { max-width:800px; margin:48px auto 0; }
+    .faq-item { border-bottom:1px solid var(--border); padding:24px 0; }
+    .faq-item:first-child { border-top:1px solid var(--border); }
+    .faq-q { font-size:16px; font-weight:700; color:var(--navy); cursor:pointer; display:flex; justify-content:space-between; align-items:center; margin:0; gap:16px; user-select:none; background:none; border:none; width:100%; text-align:left; padding:0; font-family:inherit; }
+    .faq-q .faq-arrow { font-size:18px; font-weight:400; color:var(--primary); transition:transform 0.2s ease; flex-shrink:0; }
+    .faq-a { font-size:14px; color:var(--medium); line-height:1.7; padding-top:12px; display:none; margin:0; }
+    .faq-a.open { display:block; }
+
+    /* ============================================================
+       INVESTOR PAGE
+       ============================================================ */
+    .market-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+    .market-card { border:1px solid var(--border); border-radius:var(--radius); padding:28px; background:var(--white); }
+    .market-card-title { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--medium); margin:0 0 8px; }
+    .market-card-num { font-size:36px; font-weight:800; color:var(--primary); line-height:1; margin:0 0 12px; letter-spacing:-1px; }
+    .market-card p { font-size:14px; color:var(--medium); line-height:1.65; margin:0; }
+    .inv-stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:48px; }
+    .inv-stat-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:var(--radius); padding:28px; text-align:center; }
+    .inv-stat-num { font-size:40px; font-weight:800; color:var(--accent); line-height:1; letter-spacing:-1px; }
+    .inv-stat-label { font-size:13px; color:rgba(255,255,255,0.7); margin-top:8px; line-height:1.4; }
+    .credential-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
+    .credential-list li { display:flex; align-items:flex-start; gap:12px; font-size:14px; color:var(--navy); background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px; font-weight:500; line-height:1.5; }
+    .credential-list li::before { content:"✓"; color:var(--primary); font-weight:800; flex-shrink:0; }
+
+    /* ============================================================
+       NEW RESPONSIVE OVERRIDES
+       ============================================================ */
+    @media (max-width: 960px) {
+      .roi-grid { grid-template-columns:repeat(2,1fr); }
+      .testimonial-grid { grid-template-columns:1fr; }
+      .inv-stat-grid { grid-template-columns:repeat(2,1fr); }
+      .market-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width: 640px) {
+      .roi-grid { grid-template-columns:1fr; }
+      .roi-num { font-size:40px; }
+      .inv-stat-grid { grid-template-columns:1fr; }
+      .pricing-toggle { flex-direction:column; border-radius:var(--radius); }
+      .toggle-btn { border-radius:calc(var(--radius) - 4px); text-align:center; }
+    }
+
   </style>
 </head>
 <body>
@@ -1396,12 +1475,14 @@
         <span class="logo-text">One<span>Bank</span> SA</span>
       </div>
       <nav>
-        <a id="nav-home"     class="active" onclick="showPage('home')">Home</a>
-        <a id="nav-about"              onclick="showPage('about')">About</a>
-        <a id="nav-features"           onclick="showPage('features')">Features</a>
-        <a id="nav-security"           onclick="showPage('security')">Security</a>
-        <a id="nav-pricing"            onclick="showPage('pricing')">Pricing</a>
-        <a id="nav-contact"            onclick="showPage('contact')">Contact</a>
+        <a id="nav-home"      class="active" onclick="showPage('home')">Home</a>
+        <a id="nav-about"               onclick="showPage('about')">About</a>
+        <a id="nav-features"            onclick="showPage('features')">Features</a>
+        <a id="nav-security"            onclick="showPage('security')">Security</a>
+        <a id="nav-pricing"             onclick="showPage('pricing')">Pricing</a>
+        <a id="nav-investors"           onclick="showPage('investors')">Investors</a>
+        <a id="nav-faq"                 onclick="showPage('faq')">FAQ</a>
+        <a id="nav-contact"             onclick="showPage('contact')">Contact</a>
       </nav>
       <div class="header-actions">
         <a class="btn btn-outline" href="https://onebank-sa-iota.vercel.app" target="_blank">Login</a>
@@ -1552,6 +1633,43 @@
     </div>
   </section>
 
+  <!-- ROI SECTION -->
+  <section style="background:var(--navy);padding:80px 0">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag" style="background:rgba(212,160,23,0.15);color:var(--accent)">Return on Investment</div>
+        <h2 class="section-heading" style="color:var(--white)">What Does Fragmented Banking Cost <span style="color:var(--accent)">Your Business?</span></h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.75)">Every hour your treasury team spends switching between bank portals, reconciling spreadsheets, and chasing approval chains is a direct, measurable cost. Here is what the numbers look like.</p>
+      </div>
+      <div class="roi-grid">
+        <div class="roi-card">
+          <div class="roi-icon">⏱️</div>
+          <div class="roi-num">8+ hrs</div>
+          <div class="roi-label">Per week</div>
+          <p>Average time treasury teams spend on manual reconciliation across 3 or more separate bank portals — before any actual analysis begins.</p>
+        </div>
+        <div class="roi-card">
+          <div class="roi-icon">💸</div>
+          <div class="roi-num">R14,400</div>
+          <div class="roi-label">Monthly opportunity cost</div>
+          <p>R450/hr blended treasury analyst rate × 8 hrs/week × 4 weeks. The hidden productivity cost of fragmented banking — before factoring in errors or delayed decisions.</p>
+        </div>
+        <div class="roi-card">
+          <div class="roi-icon">⚡</div>
+          <div class="roi-num">&lt; 1 hr</div>
+          <div class="roi-label">With OneBank SA</div>
+          <p>A consolidated real-time dashboard across all your bank accounts cuts the morning balance check and reconciliation routine to under one hour — without switching platforms.</p>
+        </div>
+        <div class="roi-card roi-result">
+          <div class="roi-icon">📈</div>
+          <div class="roi-num">18×</div>
+          <div class="roi-label">ROI at Starter plan</div>
+          <p>R799/month Starter plan against R14,400 in recovered productivity each month. OneBank SA pays for itself in the first week — every month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- BANKS -->
   <section class="banks-section">
     <div class="container">
@@ -1567,7 +1685,7 @@
         <div class="bank-chip" style="background:var(--bank-ned);color:white;border-color:var(--bank-ned)">Nedbank</div>
         <div class="bank-chip" style="background:var(--bank-cap);color:white;border-color:var(--bank-cap)">Capitec</div>
       </div>
-      <div class="divider-text"><span>Planned ERP Integrations</span></div>
+      <div class="divider-text"><span>ERP Integrations</span></div>
       <div class="erp-grid">
         <div class="erp-chip"><div class="erp-icon">🟢</div>Sage</div>
         <div class="erp-chip"><div class="erp-icon">🔵</div>SAP</div>
@@ -1659,6 +1777,53 @@
       </div>
       <div style="text-align:center;margin-top:36px">
         <button class="btn btn-primary btn-lg" onclick="showPage('features')">View All Features →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Beta Feedback</div>
+        <h2 class="section-heading">What Beta Users <span>Are Saying</span></h2>
+        <p class="section-sub">Real feedback from treasury professionals actively using the platform during our private Beta phase.</p>
+      </div>
+      <p style="text-align:center;font-size:13px;color:var(--medium);margin-top:-20px;margin-bottom:12px">Feedback from active beta participants. Names and details shared with permission.</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Finally a single view across all our accounts. We bank with four institutions and the morning balance check took 45 minutes across four portals. Now it's one screen, one minute."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">TM</div>
+            <div>
+              <div class="testimonial-name">Thabo M.</div>
+              <div class="testimonial-role">Finance Manager &middot; Johannesburg</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"The approval workflow is exactly what we needed for governance. Our previous process was approvals over WhatsApp — that's a compliance risk. OneBank SA gives us a proper, auditable trail."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">NP</div>
+            <div>
+              <div class="testimonial-name">Nokuthula P.</div>
+              <div class="testimonial-role">Financial Controller &middot; Cape Town</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Impressive for a Beta product. The RBAC permission matrix is more granular than what I've seen at large corporates running multi-hundred-million rand treasuries. The founders understand governance."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SK</div>
+            <div>
+              <div class="testimonial-name">Sipho K.</div>
+              <div class="testimonial-role">Treasury Analyst &middot; Pretoria</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2363,12 +2528,33 @@
     </div>
   </section>
 
+  <!-- RESPONSIBLE DISCLOSURE -->
+  <section style="background:var(--light-bg)">
+    <div class="container">
+      <div style="max-width:680px;margin:0 auto;text-align:center">
+        <div class="section-tag" style="display:inline-block;margin-bottom:20px">Responsible Disclosure</div>
+        <h2 class="section-heading">Found a Security Issue?</h2>
+        <p class="section-sub" style="margin-bottom:28px">We operate a responsible disclosure policy. If you discover a potential vulnerability, we want to hear from you — not after a breach, before one.</p>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:left;margin-bottom:24px">
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;color:var(--medium);line-height:1.65">
+            <div><strong style="color:var(--navy)">📧 Report to:</strong> <a href="mailto:security@onebank.co.za" style="color:var(--primary);font-weight:600">security@onebank.co.za</a></div>
+            <div><strong style="color:var(--navy)">⏱️ Response SLA:</strong> We commit to acknowledging every report within 48 hours.</div>
+            <div><strong style="color:var(--navy)">🛡️ Safe harbour:</strong> We do not pursue legal action against good-faith security researchers acting within scope.</div>
+            <div><strong style="color:var(--navy)">✅ In scope:</strong> The OneBank SA web application, API endpoints, and authentication flows.</div>
+          </div>
+        </div>
+        <a href="mailto:security@onebank.co.za" class="btn btn-primary">Email security@onebank.co.za</a>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-section">
     <div class="container"><div class="cta-inner">
       <h2>Security Questions?</h2>
       <p>Our team is happy to walk through the security architecture in detail for your compliance team or auditors.</p>
       <div class="cta-actions">
         <button class="btn btn-white btn-lg" onclick="showPage('contact')">Speak to the Team</button>
+        <button class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.4)" onclick="showPage('faq')">Read the FAQ</button>
       </div>
     </div></div>
   </section>
@@ -2396,13 +2582,23 @@
         <h2 class="section-heading">Choose Your <span>Plan</span></h2>
         <p class="section-sub">Four plans. One platform. Start free as a founding Beta member, or go straight to Starter from R799/month. No hidden fees, no long-term lock-in.</p>
       </div>
+
+      <!-- ANNUAL / MONTHLY TOGGLE -->
+      <div class="text-center" style="margin-bottom:32px">
+        <p style="font-size:13px;color:var(--medium);margin:0 0 12px;font-weight:500">Save 2 months with annual billing</p>
+        <div class="pricing-toggle">
+          <button id="toggle-monthly" class="toggle-btn active" onclick="setPricingPeriod('monthly')" type="button">Monthly</button>
+          <button id="toggle-annual"  class="toggle-btn"        onclick="setPricingPeriod('annual')"  type="button">Annual &middot; 2 months free</button>
+        </div>
+      </div>
+
       <div class="pricing-grid">
 
         <!-- Beta (Founding Member) -->
         <div class="price-card">
           <div class="price-badge" style="background:var(--primary)">Founding Members</div>
           <div class="price-tier" style="margin-top:14px">Beta</div>
-          <div class="price-amount">R0</div>
+          <div class="price-amount" data-monthly="R0" data-annual="R0">R0</div>
           <div class="price-period">/ month — invite only</div>
           <div class="price-features">
             <div class="price-feat"><span class="price-check">✓</span> Full platform access</div>
@@ -2419,8 +2615,8 @@
         <!-- Starter -->
         <div class="price-card">
           <div class="price-tier">Starter</div>
-          <div class="price-amount">R799</div>
-          <div class="price-period">/ organisation / month</div>
+          <div class="price-amount" data-monthly="R799" data-annual="R7,990 /yr">R799</div>
+          <div class="price-period" id="period-starter">/ organisation / month</div>
           <div class="price-features">
             <div class="price-feat"><span class="price-check">✓</span> All core platform features</div>
             <div class="price-feat"><span class="price-check">✓</span> Up to 5 connected bank accounts</div>
@@ -2437,16 +2633,18 @@
         <div class="price-card featured">
           <div class="price-badge">Most Popular</div>
           <div class="price-tier" style="margin-top:14px">Growth</div>
-          <div class="price-amount">R2,499</div>
-          <div class="price-period">/ organisation / month</div>
+          <div class="price-amount" data-monthly="R2,499" data-annual="R24,990 /yr">R2,499</div>
+          <div class="price-period" id="period-growth">/ organisation / month</div>
           <div class="price-features">
             <div class="price-feat"><span class="price-check">✓</span> Everything in Starter</div>
             <div class="price-feat"><span class="price-check">✓</span> Up to 25 connected bank accounts</div>
-            <div class="price-feat"><span class="price-check">✓</span> Live SA bank data (Stitch)</div>
-            <div class="price-feat"><span class="price-check">✓</span> Two-factor authentication</div>
+            <div class="price-feat"><span class="price-check">✓</span> Advanced analytics &amp; reporting</div>
+            <div class="price-feat"><span class="price-check">✓</span> Public stakeholder metrics dashboard</div>
             <div class="price-feat"><span class="price-check">✓</span> Real-time notifications</div>
-            <div class="price-feat"><span class="price-check">✓</span> Advanced analytics &amp; forecasting</div>
+            <div class="price-feat"><span class="price-check">✓</span> Transfer limits &amp; governance controls</div>
             <div class="price-feat"><span class="price-check">✓</span> Priority support</div>
+            <div class="price-feat" style="opacity:0.65"><span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">◎</span> Live bank data via Stitch — Q2 2026</div>
+            <div class="price-feat" style="opacity:0.65"><span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">◎</span> Two-factor authentication — Q2 2026</div>
           </div>
           <button class="btn btn-white" style="width:100%" onclick="showPage('contact')">Book a Demo</button>
         </div>
@@ -2454,16 +2652,16 @@
         <!-- Enterprise -->
         <div class="price-card">
           <div class="price-tier">Enterprise</div>
-          <div class="price-amount" style="font-size:28px;padding-top:7px">Custom</div>
+          <div class="price-amount" style="font-size:28px;padding-top:7px" data-monthly="Custom" data-annual="Custom">Custom</div>
           <div class="price-period">/ month — contact for pricing</div>
           <div class="price-features">
             <div class="price-feat"><span class="price-check">✓</span> Everything in Growth</div>
             <div class="price-feat"><span class="price-check">✓</span> Unlimited connected bank accounts</div>
-            <div class="price-feat"><span class="price-check">✓</span> ISO 27001 certification</div>
-            <div class="price-feat"><span class="price-check">✓</span> SOC 2 Type II audit</div>
-            <div class="price-feat"><span class="price-check">✓</span> SA-region database (POPIA)</div>
-            <div class="price-feat"><span class="price-check">✓</span> White-label option</div>
-            <div class="price-feat"><span class="price-check">✓</span> Dedicated SLA &amp; Public API</div>
+            <div class="price-feat"><span class="price-check">✓</span> Dedicated SLA &amp; named account manager</div>
+            <div class="price-feat"><span class="price-check">✓</span> Custom onboarding &amp; training</div>
+            <div class="price-feat" style="opacity:0.65"><span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">◎</span> ISO 27001 certification — Q4 2026</div>
+            <div class="price-feat" style="opacity:0.65"><span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">◎</span> SOC 2 Type II audit — Q4 2026</div>
+            <div class="price-feat" style="opacity:0.65"><span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">◎</span> White-label &amp; Public API — Q4 2026</div>
           </div>
           <button class="btn btn-primary" style="width:100%" onclick="showPage('contact')">Contact Sales</button>
         </div>
@@ -2629,6 +2827,276 @@
 </div><!-- /page-contact -->
 
 
+<!-- ============================================================ -->
+<!--  PAGE: FAQ                                                   -->
+<!-- ============================================================ -->
+<div id="page-faq" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <div class="hero-badge"><span class="dot"></span> Frequently Asked Questions</div>
+      <h1>Everything You Need to <span style="color:#6EE7B7">Know</span></h1>
+      <p>Answers to the most common questions from CFOs, treasury managers, IT teams, investors, and regulators.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Product</div>
+        <h2 class="section-heading">Platform &amp; <span>Product</span></h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is payment execution live or is it simulated?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">During Beta, all payment initiation is in simulation mode — no actual funds are moved. This allows treasury teams to test workflows, configure approvals, and validate governance structures safely. Live payment execution is planned for Version 1.1 (Q2 2026) once we have direct Stitch Money API connectivity.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Which banks does OneBank SA support?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">We currently support all five major South African commercial banks: FNB, Standard Bank, Absa, Nedbank, and Capitec. We connect via the platform's bank account management system, with live real-time data via Stitch Money planned for Q2 2026.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Can we use OneBank SA if we only bank with one institution?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">Yes — the platform works with any number of banks from one upward. Single-bank users benefit from the approval workflow, RBAC, audit trail, and analytics features. The full value scales as you add more bank connections.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What ERP systems do you integrate with?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">The ERP integration framework supports Sage, SAP, Oracle, Dynamics 365, Xero, and QuickBooks — allowing invoice imports directly into payment workflows. Live partner API connections are in validation with Sage, with others rolling out through 2026.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How long does onboarding take?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">Most organisations are fully configured within 2–4 hours. You register, set up your organisation, add bank accounts, configure roles for each team member, and define your approval workflows. Our team is available to walk you through setup on a call.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What happens to our data if we cancel?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">You can request a full export of your data at any time. Upon account closure, your data is retained for the legally required minimum (5 years for financial audit logs under the Companies Act, 2008), then deleted. Contact <a href="mailto:bongimsk80@gmail.com" style="color:var(--primary)">bongimsk80@gmail.com</a> for a data export request.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Do you have a public API for integrations?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">A public REST API is on the roadmap for Q4 2026 as part of the Enterprise tier. In the meantime, ERP integrations are handled via the platform's built-in connectors.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is there a minimum contract length?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">No. All plans are month-to-month. Annual billing is available at a discount (equivalent to 2 months free). You can cancel at any time with no penalty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--light-bg)">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Security &amp; Compliance</div>
+        <h2 class="section-heading">Compliance &amp; <span>Data</span></h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is OneBank SA regulated by the SARB?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">OneBank SA is a software platform, not a financial services provider — we do not hold or move funds. We are therefore not currently required to be licensed by the SARB. A SARB payment service provider licence is on our roadmap for Q4 2026 as we move toward live payment execution.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is OneBank SA POPIA compliant?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">Yes. We process personal and financial data under POPIA (Protection of Personal Information Act, 2013). We have a formal POPIA Notice, Privacy Policy, and Terms of Service. Our data is hosted on encrypted EU-region servers (Neon PostgreSQL) with adequate safeguards for cross-border transfers under POPIA section 72. See our full POPIA notice in the footer.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Where is our data stored?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">Application data is stored on Neon PostgreSQL, hosted in the EU region with GDPR-compliant infrastructure. The application runs on Vercel's edge network. All data in transit is protected by TLS 1.2+, and sensitive fields are encrypted at rest with AES-256.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What security certifications does OneBank SA hold?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">We are currently in Beta and have implemented OWASP-hardened security controls (bcrypt cost factor 12, JWT sessions, rate limiting, RBAC enforced at API level, full audit trail). ISO 27001 certification and SOC 2 Type II audit are planned for Q4 2026. We are transparent about where we are on the certification journey.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How do I report a security vulnerability?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">We operate a responsible disclosure policy. If you discover a potential security issue, please contact <a href="mailto:security@onebank.co.za" style="color:var(--primary)">security@onebank.co.za</a> with details. We commit to acknowledging your report within 48 hours. We do not pursue legal action against good-faith security researchers.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Does OneBank SA comply with FICA and POCA?<span class="faq-arrow">&#8964;</span></button>
+          <p class="faq-a">OneBank SA does not execute payments during Beta (simulation mode only), so FICA and POCA obligations that apply to payment service providers do not currently apply. Our Terms of Service explicitly prohibit use of the platform for money laundering or any FICA/POCA-prohibited activities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container"><div class="cta-inner">
+      <h2>Still Have Questions?</h2>
+      <p>Our team responds within 24 hours — reach out directly.</p>
+      <div class="cta-actions">
+        <button class="btn btn-white btn-lg" onclick="showPage('contact')">Book a Demo</button>
+        <a href="mailto:bongimsk80@gmail.com" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.4)">Email Us</a>
+      </div>
+    </div></div>
+  </section>
+</div><!-- /page-faq -->
+
+
+<!-- ============================================================ -->
+<!--  PAGE: INVESTORS                                             -->
+<!-- ============================================================ -->
+<div id="page-investors" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <div class="hero-badge"><span class="dot"></span> Investor Relations</div>
+      <h1>Building South Africa's <span style="color:#6EE7B7">Treasury OS</span></h1>
+      <p>OneBank SA is a pre-Series A B2B FinTech solving the multi-bank fragmentation problem for South African corporate treasury teams. Beta is live, traction is real.</p>
+    </div>
+  </div>
+
+  <!-- MARKET OPPORTUNITY -->
+  <section style="background:var(--light-bg)">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Market Opportunity</div>
+        <h2 class="section-heading">A Large, Underserved <span>Market</span></h2>
+        <p class="section-sub">South Africa has 400,000+ registered companies. Most CFOs at businesses with R5M+ turnover manage accounts at 2–5 banks — with no unified platform built for the SA market.</p>
+      </div>
+      <div class="market-grid">
+        <div class="market-card">
+          <p class="market-card-title">Total Addressable Market</p>
+          <div class="market-card-num">R2.8B/yr</div>
+          <p>400,000+ registered SA companies × avg R7,200 potential annual treasury software spend. Currently served by fragmented bank portals and expensive global TMS tools.</p>
+        </div>
+        <div class="market-card">
+          <p class="market-card-title">Serviceable Market</p>
+          <div class="market-card-num">R420M/yr</div>
+          <p>60,000+ SA SMEs and mid-market companies with 2+ bank relationships and a dedicated finance function — our primary ICP.</p>
+        </div>
+        <div class="market-card">
+          <p class="market-card-title">Initial Target</p>
+          <div class="market-card-num">R42M/yr</div>
+          <p>6,000 companies in Gauteng and Western Cape with active multi-bank treasury needs. Achievable within 36 months at current growth trajectory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NOW -->
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Market Timing</div>
+        <h2 class="section-heading">Three Forces Creating the <span>Window</span></h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">🏦</div>
+          <h3>Open Banking Momentum</h3>
+          <p>Stitch Money and SA open banking infrastructure are maturing. API-first bank connectivity is now possible at scale for the first time in South Africa.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">📋</div>
+          <h3>Regulatory Pressure</h3>
+          <p>POPIA enforcement (active since 2021), SARB modernisation, and board-level governance requirements are pushing CFOs to formalise treasury controls urgently.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">🌍</div>
+          <h3>Global TMS Blind Spot</h3>
+          <p>Enterprise TMS platforms (Kyriba, ION) start at R1M+/year and are built for multinationals. SA SMEs and mid-market have been entirely ignored — until now.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACTION -->
+  <section style="background:var(--navy)">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag" style="background:rgba(212,160,23,0.15);color:var(--accent)">Live Traction</div>
+        <h2 class="section-heading" style="color:var(--white)">Beta is <span style="color:var(--accent)">Live &amp; Real</span></h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.75)">OneBank SA is actively used in private Beta. These are real platform metrics — viewable without login.</p>
+      </div>
+      <div class="inv-stat-grid">
+        <div class="inv-stat-card"><div class="inv-stat-num">R684K+</div><div class="inv-stat-label">Total value processed (Beta)</div></div>
+        <div class="inv-stat-card"><div class="inv-stat-num">5</div><div class="inv-stat-label">Major SA banks connected</div></div>
+        <div class="inv-stat-card"><div class="inv-stat-num">15</div><div class="inv-stat-label">Production-ready features</div></div>
+        <div class="inv-stat-card"><div class="inv-stat-num">100%</div><div class="inv-stat-label">Uptime since launch</div></div>
+      </div>
+      <div style="text-align:center;margin-top:40px">
+        <a href="https://onebank-sa-iota.vercel.app/metrics" target="_blank" class="btn btn-orange btn-lg">View Live Platform Analytics →</a>
+        <p style="margin:12px 0 0;font-size:13px;color:rgba(255,255,255,0.5)">No login required — public dashboard</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS MODEL -->
+  <section>
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Revenue Model</div>
+        <h2 class="section-heading">Multiple Revenue <span>Streams</span></h2>
+      </div>
+      <div class="features-grid grid-4">
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">💳</div>
+          <h3>SaaS Subscriptions</h3>
+          <p>R799–R2,499+/month per organisation. Annual plans available. Predictable ARR with low churn expected in treasury (high switching cost).</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">👤</div>
+          <h3>Per-Seat Licensing</h3>
+          <p>Additional user seats beyond base tier inclusion. Scales naturally as treasury teams grow without plan upgrade.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">🔗</div>
+          <h3>Premium Integrations</h3>
+          <p>ERP connectors (Sage, SAP, Oracle) as premium add-ons for Enterprise tier clients.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-green">🏛️</div>
+          <h3>Letters of Guarantee</h3>
+          <p>Planned: digital LG application processing — a high-margin, high-frequency transaction type for SA corporate treasury teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section style="background:var(--light-bg)">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Leadership</div>
+        <h2 class="section-heading">Founder &amp; <span>CEO</span></h2>
+      </div>
+      <div class="problem-grid" style="margin-top:40px">
+        <div>
+          <div style="font-size:22px;font-weight:800;color:var(--navy);margin-bottom:4px">Bonginkosi Gerald Masuku</div>
+          <div style="font-size:14px;color:var(--primary);font-weight:600;margin-bottom:20px">Founder &amp; CEO — MBA (GIBS, University of Pretoria)</div>
+          <p class="section-sub" style="margin-bottom:16px">16+ years of enterprise risk, governance, and treasury experience across large South African corporations and parastatal organisations. Board-level CFO and audit committee exposure across multiple industries.</p>
+          <p class="section-sub">OneBank SA was built to solve the multi-bank fragmentation problem observed directly — hours lost every week across disconnected portals, approval chains over WhatsApp, and reconciliation done in spreadsheets at organisations managing hundreds of millions of rand.</p>
+          <a class="founder-linkedin" href="https://www.linkedin.com/in/bonginkosi-masuku-mba-6802315a" target="_blank" style="margin-top:24px;display:inline-flex">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            View LinkedIn Profile
+          </a>
+        </div>
+        <div>
+          <ul class="credential-list">
+            <li>MBA — Gordon Institute of Business Science (GIBS), University of Pretoria</li>
+            <li>IRMP™ — Institute of Risk Management South Africa</li>
+            <li>GRCP™ / GRCA™ — OCEG Governance, Risk &amp; Compliance</li>
+            <li>ISO 22301 Lead Implementer — Business Continuity Management</li>
+            <li>ISO 31000 Risk Management Practitioner</li>
+            <li>AI Business Strategy — Johns Hopkins University</li>
+            <li>AI Generalist Fellow — OutSkill</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTOR CTA -->
+  <section class="cta-section">
+    <div class="container"><div class="cta-inner">
+      <h2>Interested in OneBank SA?</h2>
+      <p>We are actively engaging with strategic investors, angels, and institutional funders aligned with the SA FinTech opportunity. Reach out directly.</p>
+      <div class="cta-actions">
+        <button class="btn btn-white btn-lg" onclick="showPage('contact')">Request Investor Deck</button>
+        <a href="https://onebank-sa-iota.vercel.app/metrics" target="_blank" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.4)">View Live Metrics</a>
+      </div>
+    </div></div>
+  </section>
+</div><!-- /page-investors -->
+
+
 <!-- ===================== COMPLIANCE MODALS ===================== -->
 <div id="modal-overlay" onclick="closeModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:999;align-items:center;justify-content:center;padding:24px"></div>
 
@@ -2640,7 +3108,7 @@
     </div>
     <div class="modal-body">
       <div class="modal-meta">
-        <strong>Effective date:</strong> 18 April 2026 &nbsp;·&nbsp; <strong>Information Officer:</strong> bongimsk80@gmail.com &nbsp;·&nbsp; <strong>IO Registration:</strong> Pending — Information Regulator (South Africa)
+        <strong>Effective date:</strong> 18 April 2026 &nbsp;·&nbsp; <strong>Information Officer:</strong> bongimsk80@gmail.com &nbsp;·&nbsp; <strong>Regulator:</strong> Information Regulator (South Africa)
       </div>
       <p>OneBank South Africa is committed to protecting your personal information in accordance with the <strong>Protection of Personal Information Act, 2013 (POPIA)</strong> and the <strong>Electronic Communications and Transactions Act, 2002 (ECTA)</strong>.</p>
 
@@ -2880,9 +3348,10 @@
         <h5>Company</h5>
         <a class="footer-link" href="javascript:void(0)" onclick="showPage('about')">About Us</a>
         <a class="footer-link" href="javascript:void(0)" onclick="showPage('about')">Meet the Founder</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('investors')">Investors</a>
+        <a class="footer-link" href="javascript:void(0)" onclick="showPage('faq')">FAQ</a>
         <a class="footer-link" href="javascript:void(0)" onclick="showPage('features')">Product Roadmap</a>
         <a class="footer-link" href="javascript:void(0)" onclick="showPage('contact')">Book a Demo</a>
-        <a class="footer-link" href="mailto:bongimsk80@gmail.com">Contact Us</a>
       </div>
       <div class="footer-col">
         <h5>Compliance</h5>
@@ -2890,11 +3359,12 @@
         <a class="footer-link" href="javascript:void(0)" onclick="showModal('privacy')">Privacy Notice</a>
         <a class="footer-link" href="javascript:void(0)" onclick="showModal('terms')">Terms of Service</a>
         <a class="footer-link" href="javascript:void(0)" onclick="showPage('security')">Security Docs</a>
+        <a class="footer-link" href="mailto:security@onebank.co.za">Responsible Disclosure</a>
         <a class="footer-link" href="mailto:bongimsk80@gmail.com">Report a Concern</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2026 OneBank South Africa. All rights reserved. Beta v1.0.0</div>
+      <div class="footer-copy">© 2026 OneBank South Africa (Pty) Ltd. All rights reserved. Beta v1.0.0 &nbsp;·&nbsp; Reg. No. pending CIPC &nbsp;·&nbsp; Johannesburg, South Africa</div>
       <div class="footer-legal">
         <a onclick="showModal('privacy')" style="cursor:pointer">Privacy Policy</a>
         <a onclick="showModal('terms')" style="cursor:pointer">Terms of Service</a>
@@ -2941,6 +3411,41 @@
   });
 
   const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwVMKPm3r5cV4-wiLiRD-_BN-aYg8mOC9zxV4AjljVI6SC8SFWYUI0c6m1DMN2V0u3Z/exec';
+
+  /* ── Pricing toggle ─────────────────────────────────────────── */
+  function setPricingPeriod(period) {
+    document.getElementById('toggle-monthly').classList.toggle('active', period === 'monthly');
+    document.getElementById('toggle-annual').classList.toggle('active',  period === 'annual');
+    document.querySelectorAll('.price-amount[data-monthly][data-annual]').forEach(function(el) {
+      el.textContent = period === 'annual' ? el.dataset.annual : el.dataset.monthly;
+    });
+    // Update period labels
+    var starterPeriod = document.getElementById('period-starter');
+    var growthPeriod  = document.getElementById('period-growth');
+    if (starterPeriod) starterPeriod.textContent = period === 'annual' ? '/ organisation / year — 2 months free' : '/ organisation / month';
+    if (growthPeriod)  growthPeriod.textContent  = period === 'annual' ? '/ organisation / year — 2 months free' : '/ organisation / month';
+  }
+
+  /* ── FAQ accordion ───────────────────────────────────────────── */
+  function toggleFaq(el) {
+    var answer = el.nextElementSibling;
+    var isOpen = answer.classList.contains('open');
+    var grid   = el.closest('.faq-grid');
+    if (grid) {
+      grid.querySelectorAll('.faq-a.open').forEach(function(a) { a.classList.remove('open'); });
+      grid.querySelectorAll('.faq-q').forEach(function(q) {
+        q.classList.remove('faq-open');
+        var arr = q.querySelector('.faq-arrow');
+        if (arr) arr.style.transform = '';
+      });
+    }
+    if (!isOpen) {
+      answer.classList.add('open');
+      el.classList.add('faq-open');
+      var arrow = el.querySelector('.faq-arrow');
+      if (arrow) arrow.style.transform = 'rotate(180deg)';
+    }
+  }
 
   async function handleFormSubmit(e) {
     e.preventDefault();
