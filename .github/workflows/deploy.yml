@@ -1,0 +1,81 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: b437a2ce-c8b4-4f77-a6da-251cf5aaf93d
+        run: |
+          python3 << 'EOF'
+          import hashlib, json, os, sys
+          import urllib.request, urllib.error
+
+          SITE_ID = os.environ['NETLIFY_SITE_ID']
+          TOKEN   = os.environ['NETLIFY_AUTH_TOKEN']
+          BASE    = '.'
+          FILES   = ['index.html', 'founder-v2.jpg', 'founder.jpg', 'og-image.png']
+
+          def api(method, path, data=None, raw=None, content_type='application/json'):
+              url = f'https://api.netlify.com/api/v1{path}'
+              body = (raw if raw is not None else
+                      json.dumps(data).encode() if data is not None else None)
+              req = urllib.request.Request(url, data=body, method=method)
+              req.add_header('Authorization', f'Bearer {TOKEN}')
+              req.add_header('Content-Type', content_type)
+              with urllib.request.urlopen(req) as r:
+                  return json.loads(r.read())
+
+          # Build file hash map
+          hashes = {}
+          contents = {}
+          for fname in FILES:
+              path = os.path.join(BASE, fname)
+              if not os.path.exists(path):
+                  continue
+              with open(path, 'rb') as f:
+                  content = f.read()
+              sha1 = hashlib.sha1(content).hexdigest()
+              hashes[f'/{fname}'] = sha1
+              contents[sha1] = (fname, content)
+
+          # Create deploy
+          deploy = api('POST', f'/sites/{SITE_ID}/deploys', {'files': hashes, 'draft': False})
+          deploy_id = deploy['id']
+          required  = deploy.get('required', [])
+          print(f'Deploy {deploy_id} created — {len(required)} file(s) to upload')
+
+          # Upload only what Netlify needs
+          for sha1 in required:
+              fname, content = contents[sha1]
+              ext = fname.rsplit('.', 1)[-1].lower()
+              mime = {'html': 'text/html', 'jpg': 'image/jpeg',
+                      'jpeg': 'image/jpeg', 'png': 'image/png'}.get(ext, 'application/octet-stream')
+              api('PUT', f'/deploys/{deploy_id}/files/{fname}', raw=content, content_type=mime)
+              print(f'  uploaded {fname}')
+
+          # Wait for ready
+          import time
+          for _ in range(30):
+              status = api('GET', f'/deploys/{deploy_id}')
+              state  = status.get('state')
+              print(f'  state: {state}')
+              if state == 'ready':
+                  print(f"Live: {status.get('deploy_ssl_url')}")
+                  sys.exit(0)
+              if state == 'error':
+                  print('Deploy failed:', status.get('error_message'))
+                  sys.exit(1)
+              time.sleep(3)
+
+          print('Timed out waiting for deploy')
+          sys.exit(1)
+          EOF
