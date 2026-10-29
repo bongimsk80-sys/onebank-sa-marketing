@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security: OneView</title>
+<meta name="description" content="How OneView protects financial data: two-factor sign-in, read-only bank access, encryption and a tamper-evident audit trail.">
+<link rel="canonical" href="https://onebank-sa.netlify.app/security/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OneView">
+<meta property="og:title" content="Security: OneView">
+<meta property="og:description" content="How OneView protects financial data: two-factor sign-in, read-only bank access, encryption and a tamper-evident audit trail.">
+<meta property="og:url" content="https://onebank-sa.netlify.app/security/">
+<meta property="og:image" content="https://onebank-sa.netlify.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="beta-note"><div class="wrap">OneView is in beta. Payments are simulated and no money moves. <a href="/faq/#simulation">What this means</a></div></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="6" fill="#2B54A6"/><circle cx="13" cy="13" r="6.2" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M4.5 13h17" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>OneView</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="/product/">Product</a>
+<a href="/security/" aria-current="page">Security</a>
+<a href="/pricing/">Pricing</a>
+<a href="/about/">About</a>
+<a href="/faq/">FAQ</a>
+      <a href="https://onebank-sa-iota.vercel.app/login">Sign in</a>
+      <a class="btn btn-primary" href="/demo/">Book a demo</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <h1>Security and data protection</h1>
+    <p class="lead">What we do to protect your financial data today, and what is still on the way. We would rather be precise than impressive.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <h2>Controls in place</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Area</th><th scope="col">What we do</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sign-in</strong></td><td>Passwords hashed with bcrypt; authenticator-app codes required for admins, approvers and executors; sessions invalidated after a password reset; rate limits on sign-in.</td></tr>
+        <tr><td><strong>Separation of companies</strong></td><td>Every request is checked against your organisation; users without an organisation cannot read any data.</td></tr>
+        <tr><td><strong>Approvals</strong></td><td>Initiators cannot approve their own payments; limits and roles are enforced on the server, not only in the screen.</td></tr>
+        <tr><td><strong>Bank access</strong></td><td>Read-only, consent-based access through Stitch. Bank access tokens are encrypted with AES-256-GCM. We never ask for or store online-banking passwords.</td></tr>
+        <tr><td><strong>Audit trail</strong></td><td>Append-only and hash-chained per organisation; admins can check that it has not been altered.</td></tr>
+        <tr><td><strong>Transport</strong></td><td>HTTPS everywhere with HSTS; database connections require TLS.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+<section>
+  <div class="wrap split">
+    <div>
+      <h2>Where your data is held</h2>
+      <p>The application runs on Vercel and its database is a managed PostgreSQL service (Neon) in the European Union. Transfers outside South Africa rely on binding operator agreements under section 72 of POPIA. We plan to move the database to a South African region before onboarding live customer bank data.</p>
+      <p>Bank data retrieved through Stitch is processed by Stitch in South Africa.</p>
+    </div>
+    <div>
+      <h2>Still to come</h2>
+      <ul>
+        <li>Independent penetration test before the first live-data pilot</li>
+        <li>South African database region</li>
+        <li>ISO 27001 readiness programme</li>
+      </ul>
+      <h2 class="mt-32">Report a vulnerability</h2>
+      <p>Email <a href="mailto:security@oneview.co.za">security@oneview.co.za</a>. We acknowledge reports within two working days and will not take action against good-faith research that avoids customer data and service disruption.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="6" fill="#2B54A6"/><circle cx="13" cy="13" r="6.2" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M4.5 13h17" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>OneView</a>
+      <p class="small mt-12">Payment approval and cash visibility across South African banks.</p>
+      <p class="small">OneView is not a bank and does not hold client funds. Company registration in progress. Johannesburg, South Africa.</p>
+    </div>
+    <div>
+      <h2>Product</h2>
+      <ul>
+        <li><a href="/product/">Features</a></li>
+        <li><a href="/security/">Security</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="https://onebank-sa-iota.vercel.app/login">Sign in</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/demo/">Book a demo</a></li>
+        <li><a href="/legal/privacy/">Privacy notice</a></li>
+        <li><a href="/legal/terms/">Website terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
