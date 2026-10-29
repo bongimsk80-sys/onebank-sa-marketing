@@ -15,7 +15,7 @@ Commit the generated files. Pushing to `main` runs `.github/workflows/deploy.yml
 
 | Setting | Where | Now |
 | --- | --- | --- |
-| Site URL (canonical links, sitemap, social image) | `SITE_URL` in `tools/build.py` | `https://oneview-sa.netlify.app` |
+| Site URL (canonical links, sitemap, social image) | `SITE_URL` in `tools/build.py` | `https://onebank-sa.netlify.app` |
 | App URL (sign-in links, demo form endpoint) | `APP_URL` in `tools/build.py` and `connect-src` in `netlify.toml` | `https://onebank-sa-iota.vercel.app` |
 | Contact, security and privacy mailboxes | `CONTACT`, `SECURITY`, `PRIVACY` in `tools/build.py` | `@oneview.co.za` addresses; the domain must be registered and the mailboxes working |
 | Allowed form origin | `MARKETING_ORIGINS` in the app's environment | must include the site URL |

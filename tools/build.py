@@ -10,7 +10,7 @@ from pathlib import Path
 from datetime import date
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE_URL = "https://oneview-sa.netlify.app"          # change when the custom domain is live
+SITE_URL = "https://onebank-sa.netlify.app"          # current Netlify address; change when the custom domain is live
 APP_URL = "https://onebank-sa-iota.vercel.app"         # the OneView app (rename the Vercel domain to match the brand)
 CONTACT = "hello@oneview.co.za"
 SECURITY = "security@oneview.co.za"
