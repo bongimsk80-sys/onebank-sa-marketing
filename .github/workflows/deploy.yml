@@ -22,7 +22,16 @@ jobs:
           SITE_ID = os.environ['NETLIFY_SITE_ID']
           TOKEN   = os.environ['NETLIFY_AUTH_TOKEN']
           BASE    = '.'
-          FILES   = ['index.html', 'founder-v2.jpg', 'founder.jpg', 'og-image.png']
+          # Every published file except repository plumbing and the site generator
+          SKIP_DIRS = {'.git', '.github', 'tools', 'node_modules'}
+          SKIP_FILES = {'README.md', '.gitignore'}
+          FILES = []
+          for dirpath, dirnames, filenames in os.walk(BASE):
+              dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+              for f in filenames:
+                  rel = os.path.relpath(os.path.join(dirpath, f), BASE)
+                  if f not in SKIP_FILES:
+                      FILES.append(rel.replace(os.sep, '/'))
 
           def api(method, path, data=None, raw=None, content_type='application/json'):
               url = f'https://api.netlify.com/api/v1{path}'
@@ -57,8 +66,9 @@ jobs:
           for sha1 in required:
               fname, content = contents[sha1]
               ext = fname.rsplit('.', 1)[-1].lower()
-              mime = {'html': 'text/html', 'jpg': 'image/jpeg',
-                      'jpeg': 'image/jpeg', 'png': 'image/png'}.get(ext, 'application/octet-stream')
+              mime = {'html': 'text/html', 'jpg': 'image/jpeg', 'jpeg': 'image/jpeg', 'png': 'image/png',
+                      'css': 'text/css', 'js': 'application/javascript', 'svg': 'image/svg+xml',
+                      'xml': 'application/xml', 'txt': 'text/plain', 'toml': 'text/plain'}.get(ext, 'application/octet-stream')
               api('PUT', f'/deploys/{deploy_id}/files/{fname}', raw=content, content_type=mime)
               print(f'  uploaded {fname}')
 
