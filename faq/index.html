@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ: OneView</title>
+<meta name="description" content="Answers on payments, bank connections, regulation, POPIA and data storage.">
+<link rel="canonical" href="https://oneview-sa.netlify.app/faq/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OneView">
+<meta property="og:title" content="FAQ: OneView">
+<meta property="og:description" content="Answers on payments, bank connections, regulation, POPIA and data storage.">
+<meta property="og:url" content="https://oneview-sa.netlify.app/faq/">
+<meta property="og:image" content="https://oneview-sa.netlify.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="beta-note"><div class="wrap">OneView is in beta. Payments are simulated and no money moves. <a href="/faq/#simulation">What this means</a></div></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="6" fill="#2B54A6"/><circle cx="13" cy="13" r="6.2" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M4.5 13h17" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>OneView</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="/product/">Product</a>
+<a href="/security/">Security</a>
+<a href="/pricing/">Pricing</a>
+<a href="/about/">About</a>
+<a href="/faq/" aria-current="page">FAQ</a>
+      <a href="https://onebank-sa-iota.vercel.app/login">Sign in</a>
+      <a class="btn btn-primary" href="/demo/">Book a demo</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <h1>Questions finance teams ask us</h1>
+    <div class="mt-28"><details id="simulation"><summary>Does OneView move money?</summary><p>Not during the beta. Payments go through the full approval workflow, but execution is simulated and no funds leave any account. Sending payments to banks from OneView will need regulatory authorisation or a licensed partner, and we will switch it on only when that is in place.</p></details>
+<details id="banks"><summary>Which banks can I connect?</summary><p>FNB, Standard Bank, Absa, Nedbank, Capitec and Investec. Live data will come through Stitch once our integration is approved; until then you can use demo data or enter accounts yourself.</p></details>
+<details id="passwords"><summary>Do you need our online-banking passwords?</summary><p>No. You authorise access at your bank through Stitch and OneView receives read-only data. We never ask for or store banking passwords.</p></details>
+<details id="regulated"><summary>Is OneView regulated?</summary><p>OneView is software. It does not hold client funds or execute payments, so it does not currently need payment authorisation from the South African Reserve Bank. We are tracking the Reserve Bank's new activity-based payments framework and will obtain the authorisation, or work through a licensed partner, before offering payment execution.</p></details>
+<details id="popia"><summary>How do you handle POPIA?</summary><p>We process personal and financial information as a responsible party under POPIA. Our privacy notice explains what we collect, why, where it is held and your rights. We are registering our Information Officer with the Information Regulator.</p></details>
+<details id="data"><summary>Where is our data stored?</summary><p>In a managed PostgreSQL database in the European Union, under operator agreements that meet section 72 of POPIA. We plan to move to a South African region before onboarding live bank data.</p></details>
+<details id="onebank"><summary>Is this the product previously called OneBank TMS?</summary><p>Yes. We renamed the product OneView. South African law reserves the word “bank” for registered banks, and OneView is not a bank.</p></details>
+<details id="cancel"><summary>Can we cancel or export our data?</summary><p>Plans are month to month. You can request a full export at any time by emailing hello@oneview.co.za. Financial audit records are kept for the period the law requires, then deleted.</p></details></div>
+    <p class="mt-28">Something else? Email <a href="mailto:hello@oneview.co.za">hello@oneview.co.za</a>.</p>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="6" fill="#2B54A6"/><circle cx="13" cy="13" r="6.2" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M4.5 13h17" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>OneView</a>
+      <p class="small mt-12">Payment approval and cash visibility across South African banks.</p>
+      <p class="small">OneView is not a bank and does not hold client funds. Company registration in progress. Johannesburg, South Africa.</p>
+    </div>
+    <div>
+      <h2>Product</h2>
+      <ul>
+        <li><a href="/product/">Features</a></li>
+        <li><a href="/security/">Security</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="https://onebank-sa-iota.vercel.app/login">Sign in</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/demo/">Book a demo</a></li>
+        <li><a href="/legal/privacy/">Privacy notice</a></li>
+        <li><a href="/legal/terms/">Website terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
